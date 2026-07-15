@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E&amp;G Landscape</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: #FFFFFF;
+      color: #1F2937;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      background: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .logo { font-size: 24px; font-weight: 700; color: #0891B2; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { text-decoration: none; color: #1F2937; font-size: 16px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #0891B2; }
+    .nav-cta {
+      background: #0891B2; color: #FFF !important; padding: 10px 30px;
+      border-radius: 100px; font-weight: 600; font-size: 15px; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #06748E !important; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 120px 0 80px; text-align: center;
+      background: #FFFFFF;
+      position: relative; overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 640px; height: 640px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.06) 0%, rgba(8,145,178,0.02) 60%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 700; color: #1F2937;
+      letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 span { color: #0891B2; }
+    .hero p {
+      font-size: 18px; color: #6B7280; max-width: 540px; margin: 0 auto 36px;
+      font-weight: 400; line-height: 1.8; position: relative;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; position: relative; }
+    .btn { padding: 14px 36px; border-radius: 100px; font-weight: 600; font-size: 16px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-primary { background: #0891B2; color: #FFF; }
+    .btn-primary:hover { background: #06748E; }
+    .btn-outline { border: 2px solid #16A34A; color: #16A34A; background: transparent; }
+    .btn-outline:hover { background: #16A34A; color: #FFF; }
+
+    /* ── Neighborhood badges ── */
+    .badges {
+      padding: 40px 0;
+      background: #F0F9FF;
+    }
+    .badges-grid { display: flex; justify-content: center; gap: 64px; }
+    .badge-item { text-align: center; }
+    .badge-item .label { font-size: 16px; font-weight: 600; color: #1F2937; }
+    .badge-item .sub { font-size: 14px; color: #6B7280; margin-top: 2px; font-weight: 400; }
+
+    /* ── Sections common ── */
+    section { padding: 96px 0; }
+    .section-title {
+      font-size: 36px; font-weight: 700; color: #1F2937; letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      color: #6B7280; font-size: 17px; max-width: 520px;
+      margin-bottom: 56px; font-weight: 400;
+    }
+
+    /* ── Services ── */
+    .services { background: #F0F9FF; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: #FFFFFF; border-radius: 16px; padding: 36px 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-top: 4px solid #0891B2;
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(8,145,178,0.08); transform: translateY(-3px); }
+    .service-card h3 { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
+    .service-card p { font-size: 15px; color: #6B7280; font-weight: 400; line-height: 1.7; }
+    .service-icon { font-size: 30px; color: #0891B2; margin-bottom: 16px; display: block; }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-text p { color: #4B5563; font-size: 16px; margin-bottom: 16px; font-weight: 400; line-height: 1.9; }
+    .about-visual {
+      background: #F0F9FF; border-radius: 16px; height: 380px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 76px; border: 2px solid #BAE6FD;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials { background: #FFFFFF; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      background: #F0F9FF; border-radius: 16px; padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03); border: 1px solid #E0F2FE;
+    }
+    .testimonial-card .stars { margin-bottom: 12px; }
+    .testimonial-card .stars i { color: #D1D5DB; font-size: 18px; margin-right: 2px; }
+    .testimonial-card p { font-size: 15px; color: #4B5563; font-weight: 400; line-height: 1.7; margin-bottom: 16px; }
+    .testimonial-card .name { font-size: 15px; font-weight: 600; color: #1F2937; }
+
+    /* ── Contact ── */
+    .contact { background: #F0F9FF; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .contact-info h3 { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
+    .contact-info p { color: #4B5563; font-size: 16px; font-weight: 400; margin-bottom: 10px; }
+    .contact-info i { color: #0891B2; width: 26px; margin-right: 8px; }
+    .contact-info a { color: #1F2937; text-decoration: none; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: 14px 18px; border: 1px solid #E5E7EB; border-radius: 14px;
+      font-family: 'Fredoka', sans-serif; font-size: 15px; margin-bottom: 16px;
+      background: #FFFFFF; transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #0891B2; }
+    .contact-form textarea { height: 120px; resize: vertical; }
+    .contact-form button {
+      background: #16A34A; color: #FFF; border: none; padding: 14px 36px;
+      border-radius: 100px; font-weight: 600; font-size: 16px; font-family: 'Fredoka', sans-serif;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .contact-form button:hover { background: #15803D; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 64px 0 48px; background: #0891B2; color: #FFF;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    }
+    footer h4 { font-size: 17px; font-weight: 600; color: #FFF; margin-bottom: 16px; }
+    footer p, footer a { font-size: 15px; color: #BAE6FD; text-decoration: none; font-weight: 400; line-height: 2.2; }
+    footer a:hover { color: #FFF; }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); text-align: center; font-size: 14px; color: #BAE6FD; }
+
+    /* ── Floating Quote ── */
+    .float-quote {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      background: linear-gradient(135deg, #0891B2, #16A34A);
+      color: #FFF; padding: 16px 28px; border-radius: 100px;
+      box-shadow: 0 4px 20px rgba(8,145,178,0.3);
+      font-weight: 600; font-size: 17px; text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-quote:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(8,145,178,0.4); }
+    .float-quote i { font-size: 18px; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      nav .container { flex-direction: column; height: auto; padding: 16px 24px; gap: 12px; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+      .hero { padding: 64px 0 48px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      .hero-circle { width: 320px; height: 320px; }
+      .badges-grid { flex-direction: column; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <span class="logo">E&amp;G Landscape</span>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-circle"></div>
+    <div class="container">
+      <h1>Neighborly.<br><span>Reliable.</span> Done.</h1>
+      <p>E&amp;G Landscape is your local crew — friendly service, honest pricing, and yards that look their best every time. We've been part of Silver Spring since 2018.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="#services" class="btn btn-outline">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges -->
+  <div class="badges">
+    <div class="container">
+      <div class="badges-grid">
+        <div class="badge-item"><div class="label">Serving Silver Spring Since 2018</div><div class="sub">Proudly local</div></div>
+        <div class="badge-item"><div class="label">Local Team</div><div class="sub">Neighbors serving neighbors</div></div>
+        <div class="badge-item"><div class="label">Free Estimates</div><div class="sub">No pressure, no obligation</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">What We Offer</h2>
+      <p class="section-sub">Reliable landscaping services with a friendly touch.</p>
+      <div class="services-grid">
+        <div class="service-card"><span class="service-icon"><i class="fas fa-leaf"></i></span><h3>Lawn Mowing</h3><p>Consistent weekly or bi-weekly mowing with attention to detail on every visit.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-seedling"></i></span><h3>Mulch &amp; Plantings</h3><p>Fresh mulch and seasonal plantings to add color and curb appeal to your home.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-tree"></i></span><h3>Hedge Trimming</h3><p>Shaped and pruned hedges that define your property lines beautifully.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-broom"></i></span><h3>Seasonal Cleanups</h3><p>Spring and fall cleanups that leave your yard spotless and ready for the season.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-water"></i></span><h3>Power Washing</h3><p>Restore driveways, patios, walkways, and fences with a deep clean.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-snowplow"></i></span><h3>Snow Removal</h3><p>Reliable snow clearing and de-icing for driveways and walkways all winter.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Your Neighbors,<br>Your Landscapers.</h2>
+          <p>E&amp;G Landscape started with a simple idea — treat every yard like it belongs to family. We're a small, local team that takes pride in showing up on time, communicating clearly, and doing the job right the first time.</p>
+          <p>Whether it's a weekly mow, a full-season cleanup plan, or a one-time power wash, we bring the same level of care to every property. No job is too small, and no detail is overlooked.</p>
+        </div>
+        <div class="about-visual"><img src="https://picsum.photos/seed/eg-about/600/400" alt=" " style="width:100%;height:100%;object-fit:cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">Happy Neighbors</h2>
+      <p class="section-sub">We love hearing from the community we serve.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <span class="name">[Client Name]</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <span class="name">[Client Name]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title">Reach Out</h2>
+          <p class="section-sub">Give us a call or send a message.</p>
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone"></i> <a href="tel:3013265400">(301) 326-5400</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:eg@example.com">eg@example.com</a></p>
+          <p><i class="fas fa-location-dot"></i> Silver Spring, MD</p>
+          <p style="margin-top:20px;color:#6B7280;font-size:15px;">We answer the phone — call or text for a quick estimate.</p>
+        </div>
+        <div>
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Tell us about your yard..."></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=E%26G+Landscape+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:16px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>E&amp;G Landscape</h4>
+          <p>Your local landscaping team serving Silver Spring and surrounding neighborhoods since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#">Lawn Mowing</a><br>
+          <a href="#">Mulch &amp; Plantings</a><br>
+          <a href="#">Hedge Trimming</a><br>
+          <a href="#">Seasonal Cleanups</a><br>
+          <a href="#">Power Washing</a><br>
+          <a href="#">Snow Removal</a>
+        </div>
+        <div>
+          <h4>Get in Touch</h4>
+          <p>(301) 326-5400</p>
+          <p>eg@example.com</p>
+          <p>Silver Spring, MD</p>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 E&amp;G Landscape. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <a class="float-quote" href="tel:3013265400">
+    <i class="fas fa-phone"></i> (301) 326-5400
+  </a>
+
+</body>
+</html>

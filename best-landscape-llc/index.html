@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Landscape LLC | Professional Landscape Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1F2937;
+      background: #FFFFFF;
+      line-height: 1.6;
+    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Nav */
+    nav {
+      background: #FFFFFF;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      position: sticky; top: 0; z-index: 100;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.25rem; color: #059669; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #4B5563; transition: color 0.2s; }
+    .nav-links a:hover { color: #059669; }
+    .nav-cta {
+      background: #059669; color: #fff; padding: 10px 22px; border-radius: 12px;
+      font-weight: 500; font-size: 0.85rem; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #047857; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: #1F2937; border-radius: 2px; }
+
+    /* Hero */
+    .hero {
+      padding: 0 24px;
+      background: #FFFFFF;
+    }
+    .hero-grid {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center; min-height: 80vh; padding: 40px 0;
+    }
+    .hero-left h1 {
+      font-size: 2.75rem; font-weight: 700; line-height: 1.1; color: #1F2937; margin-bottom: 16px;
+    }
+    .hero-left p {
+      font-size: 1.1rem; color: #6B7280; max-width: 480px; margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #059669; color: #fff; padding: 14px 32px; border-radius: 12px;
+      font-weight: 500; font-size: 0.95rem; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #047857; }
+    .btn-outline {
+      border: 2px solid #059669; color: #059669; padding: 12px 30px; border-radius: 12px;
+      font-weight: 500; font-size: 0.95rem; transition: all 0.2s;
+    }
+    .btn-outline:hover { background: #059669; color: #fff; }
+    .hero-right {
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+      border-radius: 24px; min-height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      transform: rotate(2deg) scale(0.97);
+      box-shadow: 0 12px 40px rgba(5,150,105,0.2);
+    }
+    .hero-right-inner {
+      transform: rotate(-2deg);
+    }
+    .hero-right-inner i {
+      font-size: 5rem; color: rgba(255,255,255,0.2);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(5,150,105,0.1); color: #059669;
+      padding: 6px 16px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500; margin-bottom: 20px;
+    }
+
+    /* Section */
+    section { padding: 80px 24px; }
+    .section-title {
+      text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 8px; color: #1F2937;
+    }
+    .section-sub {
+      text-align: center; color: #6B7280; font-size: 1rem; margin-bottom: 48px;
+    }
+
+    /* Services */
+    #services { background: #F0FDF4; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: #FFFFFF; border-radius: 12px; padding: 32px 24px;
+      border-top: 4px solid #059669;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 24px rgba(5,150,105,0.1); transform: translateY(-3px); }
+    .service-card i { font-size: 1.75rem; color: #059669; margin-bottom: 14px; }
+    .service-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1F2937; }
+    .service-card p { font-size: 0.9rem; color: #6B7280; line-height: 1.5; }
+
+    /* About */
+    #about { background: #F0FDF4; }
+    .about-centered {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .about-centered h2 { font-size: 2rem; margin-bottom: 16px; }
+    .about-centered p { color: #6B7280; line-height: 1.7; font-size: 1rem; }
+
+    /* Process */
+    .process-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: center; position: relative;
+    }
+    .process-step { text-align: center; }
+    .process-num {
+      display: flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #059669; color: #fff; font-weight: 700; font-size: 1.2rem;
+      margin: 0 auto 16px;
+    }
+    .process-step h4 { font-size: 1rem; margin-bottom: 6px; }
+    .process-step p { font-size: 0.9rem; color: #6B7280; }
+    .process-arrow { display: flex; align-items: center; justify-content: center; color: #059669; font-size: 1.5rem; }
+
+    /* Testimonials */
+    #testimonials { background: #FFFFFF; }
+    .test-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .test-card {
+      background: #F0FDF4; border-radius: 12px; padding: 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .test-stars { margin-bottom: 10px; }
+    .test-stars i { color: #D1D5DB; font-size: 0.95rem; margin-right: 2px; }
+    .test-text { font-size: 0.95rem; color: #4B5563; line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+    .test-name { font-weight: 500; font-size: 0.85rem; color: #6B7280; }
+
+    /* Contact */
+    #contact { background: #FFFFFF; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    }
+    .contact-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #F0FDF4; color: #059669; padding: 10px 18px; border-radius: 100px;
+      font-weight: 500; font-size: 0.9rem;
+    }
+    .chip i { font-size: 0.85rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form input, .contact-form textarea {
+      padding: 12px 16px; border: 1px solid #D1D5DB; border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: #059669; }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form button {
+      background: #059669; color: #fff; padding: 14px; border: none; border-radius: 12px;
+      font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: background 0.2s;
+    }
+    .contact-form button:hover { background: #047857; }
+    .contact-info h3 { font-size: 1.5rem; margin-bottom: 16px; }
+    .contact-info p { color: #6B7280; margin-bottom: 8px; font-size: 0.95rem; }
+
+    /* Footer */
+    footer {
+      background: #059669; color: rgba(255,255,255,0.9); padding: 60px 24px 32px;
+    }
+    .footer-grid {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    }
+    .footer-col h4 { font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 16px; }
+    .footer-col p, .footer-col a { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.8; display: block; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1140px; margin: 0 auto; padding-top: 32px; margin-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.55);
+    }
+
+    /* Floating quote */
+    .float-quote {
+      position: fixed; bottom: 24px; right: 24px; z-index: 99;
+      background: #059669; color: #fff; padding: 14px 24px; border-radius: 12px;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 500; font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(5,150,105,0.35);
+      transition: transform 0.2s;
+    }
+    .float-quote:hover { transform: translateY(-2px); }
+    .float-quote i { font-size: 1.1rem; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 16px 24px; gap: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+      .nav-links.open { display: flex; }
+      .nav-cta-wrap { display: none; }
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; padding: 60px 0 40px; }
+      .hero-left h1 { font-size: 2rem; }
+      .hero-right { min-height: 240px; transform: none; }
+      .hero-right-inner { transform: none; }
+      .services-grid, .test-grid, .process-row { grid-template-columns: 1fr; }
+      .process-arrow { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .float-quote { bottom: 16px; right: 16px; font-size: 0.85rem; padding: 12px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Best Landscape LLC</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta-wrap"><a href="#contact" class="nav-cta">Free Quote</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <span class="hero-badge"><i class="fas fa-check-circle"></i> Vibrant. Healthy. Best.</span>
+        <h1>Professional Landscape Services</h1>
+        <p>Full-service landscaping for homes and businesses in the metro area. Free estimates, quality work, reliable crew.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Get Free Estimate</a>
+          <a href="#services" class="btn-outline">Our Work</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-right-inner">
+          <img src="https://picsum.photos/seed/best-hero/400/400" alt=" " style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Landscaping Services</h2>
+      <p class="section-sub">Quality work for every season, every yard, every budget</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-cut"></i>
+          <h3>Lawn Care</h3>
+          <p>Regular mowing, trimming, and edging to keep your lawn looking its best week after week.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-truck"></i>
+          <h3>Mulch &amp; Stone</h3>
+          <p>Color-enhancing mulch and decorative stone installation for clean, attractive landscape beds.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-scissors"></i>
+          <h3>Hedge Trimming</h3>
+          <p>Precision trimming and shaping of hedges, bushes, and ornamental shrubs for a polished look.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-broom"></i>
+          <h3>Leaf Removal</h3>
+          <p>Thorough leaf cleanup in fall, plus spring debris removal to keep your property tidy year-round.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-tint"></i>
+          <h3>Power Washing</h3>
+          <p>Restore driveways, walkways, patios, and fences with professional pressure washing services.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-seedling"></i>
+          <h3>Landscape Installation</h3>
+          <p>New bed design, plant selection, and full installation to transform your outdoor space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="about-centered">
+        <h2>About Best Landscape LLC</h2>
+        <p>We&rsquo;re a local landscaping company focused on delivering high-quality results at fair prices. Every yard we touch gets the same attention to detail — clean lines, reliable scheduling, and honest communication. From routine mowing to full landscape installations, we treat your property with the same care we&rsquo;d give our own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section style="background: #FFFFFF;">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">Simple steps to a better yard</p>
+      <div class="process-row">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h4>Free Estimate</h4>
+          <p>We meet you on-site, assess your property, and provide a clear, no-obligation quote.</p>
+        </div>
+        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h4>Schedule Service</h4>
+          <p>Pick a date and time that works for you. We arrive on schedule, every time.</p>
+        </div>
+        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h4>We Transform Your Yard</h4>
+          <p>Our crew handles the work start to finish — leaving your property clean, tidy, and transformed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">Client Feedback</h2>
+      <p class="section-sub">Reviews from homeowners we&rsquo;ve served</p>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p class="test-text">&ldquo;Share your experience here &mdash; add a real client testimonial.&rdquo;</p>
+          <p class="test-name">&mdash; [Client Name]</p>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p class="test-text">&ldquo;Share your experience here &mdash; add a real client testimonial.&rdquo;</p>
+          <p class="test-name">&mdash; [Client Name]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub">Free estimates &mdash; call or message us today</p>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-chips">
+            <span class="chip"><i class="fas fa-phone-alt"></i> (240) 702-5557</span>
+            <span class="chip"><i class="fas fa-envelope"></i> info@bestlandscapellc.com</span>
+            <span class="chip"><i class="fas fa-map-pin"></i> Metro Area</span>
+            <span class="chip"><i class="fas fa-shield-alt"></i> Licensed &amp; Insured</span>
+          </div>
+          <div class="contact-info">
+            <p style="margin-bottom: 12px; line-height: 1.7;">Call, email, or fill out the form. We typically respond within a few hours during business hours.</p>
+            <p><strong style="color: #1F2937;">Hours:</strong> Mon &ndash; Fri 7:00 AM &ndash; 6:00 PM, Sat 8:00 AM &ndash; 2:00 PM</p>
+          </div>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <input type="text" placeholder="What service are you looking for?">
+          <textarea placeholder="Brief description of your project..."></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Best+Landscape+LLC+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Best Landscape LLC</h4>
+        <p>Vibrant. Healthy. Best. &mdash; Professional landscaping for residential and commercial properties in the metro area.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Care</a>
+        <a href="#">Mulch &amp; Stone</a>
+        <a href="#">Hedge Trimming</a>
+        <a href="#">Leaf Removal</a>
+        <a href="#">Power Washing</a>
+        <a href="#">Landscape Installation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:12407025557">(240) 702-5557</a>
+        <p>info@bestlandscapellc.com</p>
+        <p>Metro Area</p>
+        <p style="margin-top: 8px;">Licensed &amp; Insured &bull; Free Estimates</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Best Landscape LLC. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <a href="tel:12407025557" class="float-quote">
+    <i class="fas fa-phone-alt"></i> (240) 702-5557
+  </a>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

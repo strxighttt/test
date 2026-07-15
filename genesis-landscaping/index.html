@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis Landscaping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFFFF;
+      color: #1E293B;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #22C55E; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { text-decoration: none; color: #1E293B; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #22C55E; }
+    .nav-cta {
+      background: #22C55E; color: #FFF !important; padding: 10px 28px;
+      border-radius: 100px; font-weight: 600; font-size: 14px; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #16A34A !important; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 120px 0 80px; text-align: center;
+      background: #FFFFFF;
+    }
+    .hero h1 {
+      font-size: 54px; font-weight: 700; color: #22C55E;
+      letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px; color: #94A3B8; max-width: 560px; margin: 0 auto 40px;
+      font-weight: 400;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; }
+    .btn { padding: 14px 36px; border-radius: 100px; font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-primary { background: #22C55E; color: #FFF; }
+    .btn-primary:hover { background: #16A34A; }
+    .btn-outline { border: 2px solid #22C55E; color: #22C55E; background: transparent; }
+    .btn-outline:hover { background: #22C55E; color: #FFF; }
+
+    /* ── Stats ── */
+    .stats {
+      padding: 48px 0;
+      background: #F8FAFC;
+    }
+    .stats-grid {
+      display: flex; justify-content: center; gap: 80px;
+    }
+    .stat-item { text-align: center; }
+    .stat-item .label { font-size: 15px; font-weight: 500; color: #1E293B; }
+    .stat-item .sub { font-size: 13px; color: #94A3B8; margin-top: 2px; font-weight: 400; }
+
+    /* ── Sections common ── */
+    section { padding: 96px 0; }
+    .section-title {
+      font-size: 36px; font-weight: 700; color: #1E293B; letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      color: #94A3B8; font-size: 16px; max-width: 520px;
+      margin-bottom: 56px; font-weight: 400;
+    }
+
+    /* ── Services ── */
+    .services { background: #F8FAFC; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: #FFFFFF; border-radius: 16px; padding: 36px 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04); border-top: 4px solid #22C55E;
+      transition: box-shadow 0.25s;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(34,197,94,0.08); }
+    .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .service-card p { font-size: 14px; color: #94A3B8; font-weight: 400; line-height: 1.6; }
+    .service-icon { font-size: 28px; color: #22C55E; margin-bottom: 16px; display: block; }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-text p { color: #475569; font-size: 16px; margin-bottom: 16px; font-weight: 400; line-height: 1.8; }
+    .about-visual {
+      background: #22C55E; border-radius: 16px; height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 80px;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials { background: #FFFFFF; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      background: #F8FAFC; border-radius: 16px; padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .testimonial-card .stars { margin-bottom: 12px; }
+    .testimonial-card .stars i { color: #D1D5DB; font-size: 16px; margin-right: 2px; }
+    .testimonial-card p { font-size: 15px; color: #475569; font-weight: 400; line-height: 1.7; margin-bottom: 16px; }
+    .testimonial-card .name { font-size: 14px; font-weight: 600; color: #1E293B; }
+
+    /* ── Contact ── */
+    .contact { background: #F8FAFC; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    }
+    .contact-info h3 { font-size: 22px; font-weight: 600; margin-bottom: 16px; }
+    .contact-info p { color: #475569; font-size: 15px; font-weight: 400; margin-bottom: 8px; }
+    .contact-info i { color: #22C55E; width: 24px; margin-right: 8px; }
+    .contact-info a { color: #1E293B; text-decoration: none; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: 14px 18px; border: 1px solid #E2E8F0; border-radius: 12px;
+      font-family: 'Inter', sans-serif; font-size: 15px; margin-bottom: 16px;
+      background: #FFFFFF; transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #22C55E; }
+    .contact-form textarea { height: 120px; resize: vertical; }
+    .contact-form button {
+      background: #22C55E; color: #FFF; border: none; padding: 14px 36px;
+      border-radius: 100px; font-weight: 600; font-size: 15px; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .contact-form button:hover { background: #16A34A; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 64px 0 48px; background: #FFFFFF;
+      border-top: 3px solid #22C55E;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    }
+    footer h4 { font-size: 16px; font-weight: 600; color: #1E293B; margin-bottom: 16px; }
+    footer p, footer a { font-size: 14px; color: #64748B; text-decoration: none; font-weight: 400; line-height: 2; }
+    footer a:hover { color: #22C55E; }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid #E2E8F0; text-align: center; font-size: 13px; color: #94A3B8; }
+
+    /* ── Floating Quote ── */
+    .float-quote {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      background: #22C55E; color: #FFF; padding: 16px 28px; border-radius: 100px;
+      box-shadow: 0 4px 20px rgba(34,197,94,0.3);
+      font-weight: 600; font-size: 16px; text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .float-quote:hover { background: #16A34A; transform: translateY(-2px); }
+    .float-quote i { font-size: 18px; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      nav .container { flex-direction: column; height: auto; padding: 16px 24px; gap: 12px; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .hero { padding: 64px 0 48px; }
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+      .stats-grid { flex-direction: column; gap: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <span class="logo">Genesis Landscaping</span>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-cta">Free Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Fresh Start.<br>Every Season.</h1>
+      <p>Owner Sameh is on every job site. Professional landscaping with a personal touch — from mowing to cleanups, we treat your yard like our own.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="label">Owner Operated</div><div class="sub">Sameh on-site every visit</div></div>
+        <div class="stat-item"><div class="label">Free Quotes</div><div class="sub">No obligation estimates</div></div>
+        <div class="stat-item"><div class="label">Montgomery County</div><div class="sub">Proudly local service</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-sub">Full-service landscaping built around your property's needs.</p>
+      <div class="services-grid">
+        <div class="service-card"><span class="service-icon"><i class="fas fa-leaf"></i></span><h3>Lawn Mowing &amp; Edging</h3><p>Crisp, clean cuts every visit. We edge walkways and borders for a polished look.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-seedling"></i></span><h3>Mulch &amp; Bed Maintenance</h3><p>Fresh mulch, weed control, and bed definition to keep your landscape vibrant.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-tree"></i></span><h3>Hedge &amp; Shrub Trimming</h3><p>Shaped neatly to enhance your property's curb appeal and plant health.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-broom"></i></span><h3>Spring &amp; Fall Cleanups</h3><p>Thorough property cleanup — leaves, debris, and seasonal prep included.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-cut"></i></span><h3>Tree Pruning</h3><p>Safe, precise pruning to maintain tree structure and encourage healthy growth.</p></div>
+        <div class="service-card"><span class="service-icon"><i class="fas fa-mountain"></i></span><h3>Sod &amp; Seeding</h3><p>New lawn installation and overseeding for thick, healthy grass year-round.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Built on Trust,<br>Cut by Cut.</h2>
+          <p>Genesis Landscaping was founded by Sameh with one simple belief: the owner should be there. Every quote, every job, every detail — Sameh is on-site making sure the work meets his standards.</p>
+          <p>We focus on residential properties across Montgomery County, providing consistent, reliable service that turns first-time clients into long-term neighbors. No subcontractors. No surprises. Just honest work.</p>
+        </div>
+        <div class="about-visual"><img src="https://picsum.photos/seed/genesis-about/600/400" alt=" " style="width:100%;height:100%;object-fit:cover" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-sub">Real feedback from homeowners we work with every week.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <span class="name">[Client Name]</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <span class="name">[Client Name]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2 class="section-title">Let's Talk</h2>
+          <p class="section-sub">Reach out for a free, no-obligation quote.</p>
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Tell us about your project..."></textarea>
+            <button type="submit">Send Request</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i class="fas fa-phone"></i> <a href="tel:2404246174">(240) 424-6174</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:genesis@example.com">genesis@example.com</a></p>
+          <p><i class="fas fa-location-dot"></i> 11626 Gail St, Silver Spring, MD</p>
+          <p style="margin-top:20px;color:#94A3B8;font-size:14px;">We typically respond within 24 hours. Sameh will follow up personally.</p>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=11626+Gail+St+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:16px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Genesis Landscaping</h4>
+          <p>Owner-operated residential landscaping serving Montgomery County. Where quality meets consistency.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#">Lawn Mowing &amp; Edging</a><br>
+          <a href="#">Mulch &amp; Bed Maintenance</a><br>
+          <a href="#">Hedge &amp; Shrub Trimming</a><br>
+          <a href="#">Spring &amp; Fall Cleanups</a><br>
+          <a href="#">Tree Pruning</a><br>
+          <a href="#">Sod &amp; Seeding</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>11626 Gail St<br>Silver Spring, MD</p>
+          <p>(240) 424-6174</p>
+          <p>genesis@example.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Genesis Landscaping. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <a class="float-quote" href="tel:2404246174">
+    <i class="fas fa-phone"></i> (240) 424-6174
+  </a>
+
+</body>
+</html>

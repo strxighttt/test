@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binghamton Land Design | Expert Landscape Design Since 1989</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #2d3a2d;
+      background: #fafaf7;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e9e0;
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; padding-bottom: 14px;
+    }
+    .logo { font-weight: 700; font-size: 1.3rem; color: #2d5a3d; letter-spacing: -0.02em; }
+    .logo i { color: #5a8f6a; margin-right: 6px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #4a5f4a; transition: color 0.2s; }
+    .nav-links a:hover { color: #2d5a3d; }
+    .nav-cta {
+      background: #2d5a3d; color: #fff !important; padding: 8px 18px;
+      border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+    }
+    .nav-cta:hover { background: #1f402b !important; }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.3rem; color: #2d5a3d; cursor: pointer; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 72px;
+      background: linear-gradient(135deg, #f8faf6 0%, #f0f3ec 100%);
+    }
+    .hero .container { display: flex; align-items: center; gap: 48px; }
+    .hero-content { flex: 1; }
+    .hero-content h1 {
+      font-size: 2.8rem; font-weight: 700; line-height: 1.15;
+      color: #1e2e1e; letter-spacing: -0.03em; margin-bottom: 16px;
+    }
+    .hero-content h1 span { color: #2d5a3d; }
+    .hero-content p {
+      font-size: 1.1rem; color: #5b6e5b; margin-bottom: 28px; max-width: 520px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #2d5a3d; color: #fff; padding: 14px 30px;
+      border-radius: 8px; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #1f402b; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #2d5a3d; padding: 14px 30px;
+      border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+      border: 2px solid #c5d5c0; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: #2d5a3d; background: #edf3ea; }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 36px; padding-top: 28px;
+      border-top: 1px solid #dce3d8;
+    }
+    .hero-stats .stat { text-align: center; }
+    .hero-stats .stat .num { font-size: 1.6rem; font-weight: 700; color: #2d5a3d; line-height: 1.2; }
+    .hero-stats .stat .label { font-size: 0.8rem; color: #6f826f; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero-visual { flex: 1; }
+    .hero-visual img {
+      width: 100%; border-radius: 14px; box-shadow: 0 8px 32px rgba(45,90,61,0.10);
+    }
+
+    /* Trust Bar */
+    .trust-bar {
+      background: #eef3eb; padding: 20px 0; border-top: 1px solid #dce3d8;
+      border-bottom: 1px solid #dce3d8;
+    }
+    .trust-bar .container { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 500; color: #3f583f; }
+    .trust-item i { font-size: 1.2rem; color: #5a8f6a; }
+
+    /* Section common */
+    section { padding: 72px 0; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+      color: #6f826f; margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 2rem; font-weight: 700; color: #1e2e1e; margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      color: #5b6e5b; max-width: 600px; margin-bottom: 40px; font-size: 1.05rem;
+    }
+
+    /* Services */
+    #services { background: #fff; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .service-card {
+      background: #f8faf6; border: 1px solid #e5e9e0; border-radius: 12px;
+      padding: 28px 24px; transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 4px 20px rgba(45,90,61,0.07); transform: translateY(-3px); }
+    .service-card .icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: #e2ece2; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 1.3rem; color: #2d5a3d;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 600; color: #1e2e1e; margin-bottom: 8px; }
+    .service-card p { font-size: 0.9rem; color: #5b6e5b; line-height: 1.55; }
+
+    /* About */
+    #about { background: #fafaf7; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .about-grid img {
+      width: 100%; border-radius: 12px; box-shadow: 0 6px 24px rgba(45,90,61,0.08);
+    }
+    .about-text h2 { font-size: 2rem; font-weight: 700; color: #1e2e1e; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .about-text p { color: #4a5f4a; margin-bottom: 14px; font-size: 1.01rem; }
+    .about-text .since { display: inline-flex; align-items: center; gap: 8px; background: #e2ece2; padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 600; color: #1f402b; margin-top: 8px; }
+
+    /* Testimonials */
+    #testimonials { background: #fff; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .testimonial-card {
+      background: #f8faf6; border: 1px solid #e5e9e0; border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .testimonial-card .stars { color: #c4a444; font-size: 1rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testimonial-card blockquote { font-size: 0.98rem; color: #3f583f; line-height: 1.6; font-style: italic; margin-bottom: 14px; }
+    .testimonial-card .author { font-weight: 600; font-size: 0.9rem; color: #1e2e1e; }
+    .testimonial-card .location { font-size: 0.8rem; color: #6f826f; }
+
+    /* Contact */
+    #contact { background: #f8faf6; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .contact-form { background: #fff; padding: 32px; border-radius: 12px; border: 1px solid #e5e9e0; }
+    .contact-form .form-group { margin-bottom: 16px; }
+    .contact-form label { display: block; font-size: 0.85rem; font-weight: 500; color: #3f583f; margin-bottom: 4px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: 11px 14px; border: 1px solid #d4ddd0; border-radius: 8px;
+      font-family: inherit; font-size: 0.95rem; background: #fafaf7; transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #5a8f6a; }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .contact-form button { width: 100%; }
+    .contact-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #1e2e1e; }
+    .contact-info .info-item { display: flex; gap: 12px; margin-bottom: 14px; font-size: 0.95rem; color: #4a5f4a; }
+    .contact-info .info-item i { color: #5a8f6a; width: 20px; margin-top: 3px; }
+
+    /* Footer */
+    footer {
+      background: #1a2e1f; color: #c2d6c2; padding: 44px 0 28px;
+    }
+    footer .container { display: flex; flex-direction: column; gap: 28px; }
+    footer .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+    }
+    footer h4 { color: #eaf2ea; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+    footer p, footer a { font-size: 0.88rem; line-height: 1.7; }
+    footer a:hover { color: #fff; }
+    footer .footer-links { list-style: none; }
+    footer .footer-links li { margin-bottom: 6px; }
+    .footer-bottom {
+      border-top: 1px solid #2a4530; padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: #8aa58a;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; gap: 14px; background: #fff; position: absolute; top: 100%; left: 0; right: 0; padding: 20px 24px; border-bottom: 1px solid #e5e9e0; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .nav-cta { text-align: center; }
+      .hero .container { flex-direction: column; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-stats { gap: 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .trust-bar .container { gap: 20px; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo"><i class="fas fa-tree"></i>Binghamton Land Design</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Expert <span>Landscape Design</span> for Your Property</h1>
+        <p>Creating beautiful, functional outdoor spaces across the DC metro area. Trusted since 1989.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary"><i class="fas fa-phone-alt"></i> Get a Free Estimate</a>
+          <a href="#services" class="btn-secondary"><i class="fas fa-arrow-right"></i> Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">35+</div><div class="label">Years</div></div>
+          <div class="stat"><div class="num">500+</div><div class="label">Projects</div></div>
+          <div class="stat"><div class="num">4.8<i class="fas fa-star" style="font-size:0.85rem;color:#c4a444;margin-left:3px;"></i></div><div class="label">Rating</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://picsum.photos/seed/binghamton-hero/800/600" alt="Binghamton Land Design landscape project">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <span class="trust-item"><i class="fas fa-certificate"></i> 35+ Years Experience</span>
+      <span class="trust-item"><i class="fas fa-check-circle"></i> Licensed & Insured</span>
+      <span class="trust-item"><i class="fas fa-award"></i> Award-Winning Designs</span>
+      <span class="trust-item"><i class="fas fa-leaf"></i> Eco-Friendly Practices</span>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Full-service landscape design and construction from concept to completion.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h3>Landscape Design</h3>
+          <p>Custom landscape plans tailored to your property's unique character and your personal style.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-hammer"></i></div>
+          <h3>Hardscaping</h3>
+          <p>Patios, walkways, and outdoor living features built with premium materials and expert craftsmanship.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-wall"></i></div>
+          <h3>Retaining Walls</h3>
+          <p>Structural and decorative walls that manage grade changes and add visual interest to your landscape.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-seedling"></i></div>
+          <h3>Planting Design</h3>
+          <p>Thoughtful plant selection and arrangement for year-round color, texture, and ecological value.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-water"></i></div>
+          <h3>Drainage Solutions</h3>
+          <p>Effective water management systems to protect your property and keep your landscape healthy.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-border-all"></i></div>
+          <h3>Lawn Installation</h3>
+          <p>New lawn establishment and renovation using the best sod and seed varieties for our region.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <img src="https://picsum.photos/seed/binghamton-about/600/400" alt="About Binghamton Land Design">
+        <div class="about-text">
+          <div class="section-label">About Us</div>
+          <h2>Building Beautiful Landscapes for Over Three Decades</h2>
+          <p>Founded in 1989, Binghamton Land Design has been transforming outdoor spaces in the Washington, DC metro area with thoughtful design and meticulous craftsmanship.</p>
+          <p>We believe great landscapes enhance how people live, work, and connect with nature. Every project we undertake is guided by a deep respect for the land and a commitment to lasting quality.</p>
+          <span class="since"><i class="fas fa-calendar-check"></i> Proudly serving since 1989</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">We are proud of the relationships we build with every project.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Binghamton Land Design completely transformed our backyard. From the initial consultation through final installation, their team was professional, communicative, and talented."</blockquote>
+          <div class="author">— Margaret L.</div>
+          <div class="location">Silver Spring, MD</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"We hired them for a hardscaping project and the quality of work exceeded our expectations. The retaining wall and patio are beautiful and built to last. Highly recommend."</blockquote>
+          <div class="author">— David R.</div>
+          <div class="location">Bethesda, MD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's Start Your Project</h2>
+      <p class="section-subtitle">Reach out for a free consultation and estimate.</p>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Your email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="Your phone">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>301 Indian Spring Dr<br>Silver Spring, MD 20901</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <span>(301) 587-4643</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@binghamtonlanddesign.com</span>
+          </div>
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Binghamton+Land+Design+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4><i class="fas fa-tree" style="margin-right:6px;"></i>Binghamton Land Design</h4>
+          <p>Expert landscape design and construction serving the Washington, DC metro area since 1989. We create outdoor spaces that inspire, function, and endure.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Landscape Design</a></li>
+            <li><a href="#services">Hardscaping</a></li>
+            <li><a href="#services">Retaining Walls</a></li>
+            <li><a href="#services">Planting Design</a></li>
+            <li><a href="#services">Drainage Solutions</a></li>
+            <li><a href="#services">Lawn Installation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+13015874643">(301) 587-4643</a></li>
+            <li><a href="mailto:info@binghamtonlanddesign.com">Email Us</a></li>
+            <li><a href="#contact">Get a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Binghamton Land Design. All rights reserved.</span>
+        <span>301 Indian Spring Dr, Silver Spring, MD</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

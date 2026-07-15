@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timothy's Garden Inc | Garden Care Since 1989</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #2d3436;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #1b3a1b;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #5a6d5a;
+      margin-bottom: 48px;
+      font-size: 1.05rem;
+    }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, #81c784, #a5d6a7);
+      margin: 12px auto 16px;
+      border-radius: 2px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all .3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: #2e7d32;
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #1b5e20;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46,125,50,.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+    .btn-outline:hover {
+      background: #2e7d32;
+      color: #fff;
+    }
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      border-bottom: 1px solid #e8f5e9;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1b3a1b;
+    }
+    .nav-logo i { color: #43a047; margin-right: 8px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d3436;
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #2e7d32; }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: #1b3a1b; cursor: pointer; }
+    /* Hero */
+    .hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 50%, #f9fbe7 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: #2e7d32; }
+    .hero p {
+      font-size: 1.1rem;
+      color: #5a6d5a;
+      margin-bottom: 28px;
+      max-width: 540px;
+    }
+    .hero-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,.7);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2e7d32;
+    }
+    .hero-stat .label {
+      font-size: 0.82rem;
+      color: #5a6d5a;
+      margin-top: 4px;
+    }
+    /* Trust Bar */
+    .trust-bar {
+      background: #f9fbe7;
+      border-top: 1px solid #e8f5e9;
+      border-bottom: 1px solid #e8f5e9;
+      padding: 24px 0;
+    }
+    .trust-bar .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .trust-bar span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      color: #3d5a3d;
+      font-size: 0.95rem;
+    }
+    .trust-bar span i { color: #43a047; font-size: 1.2rem; }
+    /* Services */
+    #services { background: #fafff5; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+      border: 1px solid #e8f5e9;
+      transition: all .3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(46,125,50,.1);
+      border-color: #a5d6a7;
+    }
+    .service-card .icon {
+      font-size: 2.2rem;
+      color: #43a047;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.92rem;
+      color: #5a6d5a;
+    }
+    /* About */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    .about-content h2 { font-size: 2rem; margin-bottom: 16px; }
+    .about-content p { color: #5a6d5a; margin-bottom: 16px; font-size: 0.98rem; }
+    .about-content .since {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    /* Testimonials */
+    #testimonials { background: #fafff5; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #e8f5e9;
+    }
+    .testimonial-card .stars { color: #f9a825; margin-bottom: 12px; }
+    .testimonial-card blockquote {
+      font-style: italic;
+      color: #3d5a3d;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .testimonial-card .author {
+      font-weight: 600;
+      color: #1b3a1b;
+    }
+    .testimonial-card .author span {
+      font-weight: 400;
+      color: #5a6d5a;
+      font-size: 0.85rem;
+    }
+    /* Contact */
+    #contact { background: #fff; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #d4e6d4;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      background: #fafff5;
+      transition: border .2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: #66bb6a;
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-info h3 { font-size: 1.4rem; margin-bottom: 20px; }
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      color: #3d5a3d;
+      font-size: 0.95rem;
+    }
+    .contact-info p i {
+      width: 20px;
+      color: #43a047;
+      font-size: 1.1rem;
+    }
+    /* Footer */
+    footer {
+      background: #1b3a1b;
+      color: #d4e6d4;
+      padding: 40px 0 24px;
+    }
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    footer .social a {
+      color: #a5d6a7;
+      font-size: 1.2rem;
+      margin-left: 16px;
+      transition: color .2s;
+    }
+    footer .social a:hover { color: #fff; }
+    footer .copy {
+      font-size: 0.85rem;
+      opacity: .7;
+    }
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav .container { padding-top: 12px; padding-bottom: 12px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid #e8f5e9;
+        box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .hero { padding: 120px 0 60px; }
+      .hero .container { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-stats { grid-template-columns: repeat(3,1fr); gap: 10px; }
+      .hero-stat { padding: 14px 10px; }
+      .hero-stat .num { font-size: 1.4rem; }
+      section { padding: 56px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .trust-bar .container { justify-content: center; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .hero .container { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <div class="nav-logo"><i class="fas fa-seedling"></i>Timothy's Garden</div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div>
+        <p style="font-weight:600;color:#43a047;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;margin-bottom:8px"><i class="fas fa-leaf"></i> Garden Care Since 1989</p>
+        <h1>Growing Beautiful <span>Outdoor Spaces</span> Since 1989</h1>
+        <p>Silver Spring's trusted garden design and maintenance studio — creating lush, sustainable landscapes for over three decades.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check" style="margin-right:8px"></i>Book a Consultation</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num">36+</div>
+            <div class="label">Years in Business</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">1,200+</div>
+            <div class="label">Happy Clients</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">100%</div>
+            <div class="label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img class="hero-img" src="https://picsum.photos/seed/timothys-hero/800/600" alt="Beautiful garden by Timothy's Garden Inc">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <span><i class="fas fa-check-circle"></i> Family-Owned Since 1989</span>
+      <span><i class="fas fa-check-circle"></i> Licensed & Insured</span>
+      <span><i class="fas fa-check-circle"></i> Eco-Friendly Practices</span>
+      <span><i class="fas fa-check-circle"></i> Free Consultations</span>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Full-service garden care tailored to your space</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h3>Garden Design</h3>
+          <p>Custom landscape plans from concept to bloom — designed to complement your home and lifestyle.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-seedling"></i></div>
+          <h3>Planting</h3>
+          <p>Carefully selected trees, shrubs, and perennials planted to thrive in our local climate.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-leaf"></i></div>
+          <h3>Maintenance</h3>
+          <p>Regular lawn care, weeding, mulching, and seasonal clean-ups to keep your garden pristine.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-cut"></i></div>
+          <h3>Pruning</h3>
+          <p>Expert pruning to promote healthy growth, flowering, and structural beauty in every plant.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-palette"></i></div>
+          <h3>Seasonal Color</h3>
+          <p>Vibrant annual and perennial displays that bring fresh color to your garden year-round.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-water"></i></div>
+          <h3>Irrigation</h3>
+          <p>Efficient drip and sprinkler systems designed to keep your garden hydrated while saving water.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <img class="about-img" src="https://picsum.photos/seed/timothys-about/600/400" alt="About Timothy's Garden Inc">
+        </div>
+        <div class="about-content">
+          <h2>Our Story</h2>
+          <div class="divider" style="margin:12px 0 20px"></div>
+          <p>Founded in 1989, Timothy's Garden Inc has been transforming outdoor spaces in Silver Spring and the greater Washington D.C. area for over three generations. What started as a small neighborhood gardening service has grown into a full-scale design and maintenance studio.</p>
+          <p>We believe every garden tells a story. Our team combines horticultural expertise with artistic vision to create landscapes that are sustainable, beautiful, and deeply personal.</p>
+          <p class="since"><i class="fas fa-calendar-alt" style="margin-right:8px"></i> Serving the community since 1989</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Real feedback from happy homeowners</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Timothy's team completely transformed our backyard. The design is stunning and the maintenance has been flawless. Highly recommend!"</blockquote>
+          <div class="author">Sarah Mitchell <span>— Silver Spring, MD</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Professional, creative, and reliable. Our seasonal color rotation always gets compliments from the neighbors. A true gem in this community."</blockquote>
+          <div class="author">James Carter <span>— Takoma Park, MD</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Let's bring your garden vision to life</p>
+      <div class="contact-grid">
+        <div>
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number">
+            <select>
+              <option value="">Select a Service</option>
+              <option>Garden Design</option>
+              <option>Planting</option>
+              <option>Maintenance</option>
+              <option>Pruning</option>
+              <option>Seasonal Color</option>
+              <option>Irrigation</option>
+            </select>
+            <textarea placeholder="Tell us about your project..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start"><i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Visit Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 9106 Flower Ave, Silver Spring, MD 20901</p>
+          <p><i class="fas fa-phone-alt"></i> (301) 585-7546</p>
+          <p><i class="fas fa-envelope"></i> hello@timothysgarden.com</p>
+          <p><i class="fas fa-clock"></i> Mon–Fri 8:00 AM – 6:00 PM · Sat 9:00 AM – 4:00 PM</p>
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Timothys+Garden+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <div class="brand"><i class="fas fa-seedling" style="margin-right:8px"></i>Timothy's Garden Inc</div>
+        <div class="copy">&copy; 2024 Timothy's Garden Inc. All rights reserved.</div>
+      </div>
+      <div class="social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#" aria-label="Houzz"><i class="fab fa-houzz"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

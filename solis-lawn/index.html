@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solis Lawn & Landscaping Services — Serving Silver Spring since 1993. Lawn mowing, mulching, tree trimming, garden design, seasonal cleanups, and hardscaping.">
+  <title>Solis Lawn & Landscaping Services | Silver Spring, MD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-900: #1a3a2a;
+      --green-800: #2a5a3a;
+      --green-700: #3a7a4a;
+      --green-600: #4a9a5a;
+      --olive-500: #7a9a5a;
+      --olive-400: #9aba7a;
+      --sage-300: #c4d6b0;
+      --sage-200: #dde8ce;
+      --cream-100: #f5f7f0;
+      --white: #ffffff;
+      --gray-50: #fafbf9;
+      --gray-100: #f0f2ed;
+      --gray-200: #e0e3dc;
+      --gray-400: #9aa094;
+      --gray-600: #5a6054;
+      --gray-800: #2a3028;
+      --gray-900: #1a2018;
+      --radius: 12px;
+      --shadow-sm: 0 2px 8px rgba(26, 58, 42, 0.06);
+      --shadow-md: 0 8px 30px rgba(26, 58, 42, 0.08);
+      --shadow-lg: 0 20px 60px rgba(26, 58, 42, 0.1);
+      --transition: 0.3s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream-100);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--green-700); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--green-600); }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-900);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 600px;
+    }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header .section-subtitle { margin: 0 auto; }
+    section { padding: 5rem 0; }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--sage-200);
+      padding: 0 24px;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--green-900);
+    }
+    .nav-logo i { color: var(--green-700); font-size: 1.4rem; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta {
+      background: var(--green-800);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .nav-cta:hover { background: var(--green-700) !important; }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--green-900); cursor: pointer; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--white);
+        padding: 1.5rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--sage-200);
+        transform: translateY(-120%);
+        opacity: 0;
+        transition: var(--transition);
+        pointer-events: none;
+      }
+      .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav-toggle { display: block; }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--sage-200) 100%);
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--sage-300);
+      color: var(--green-900);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--green-900);
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--green-700); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--green-800);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--green-700); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--green-800);
+      border: 2px solid var(--green-800);
+    }
+    .btn-outline:hover { background: var(--green-800); color: var(--white); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--sage-200);
+    }
+    .hero-stat strong { display: block; font-size: 1.6rem; color: var(--green-900); }
+    .hero-stat span { font-size: 0.85rem; color: var(--gray-600); }
+    .hero-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    }
+
+    /* Trust Bar */
+    .trust-bar {
+      background: var(--white);
+      border-top: 1px solid var(--sage-200);
+      border-bottom: 1px solid var(--sage-200);
+      padding: 1.5rem 0;
+    }
+    .trust-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .trust-item i { color: var(--green-700); font-size: 1.2rem; }
+
+    /* Services */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--gray-50);
+      border: 1px solid var(--sage-200);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--olive-400);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--sage-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--green-700);
+      margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--green-900); margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.65; }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* About */
+    .about { background: var(--gray-50); }
+    .about .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+    .about-content h2 { text-align: left; }
+    .about-content p { margin-bottom: 1rem; color: var(--gray-600); }
+    .about-signature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--sage-200);
+    }
+    .about-signature strong { display: block; color: var(--green-900); }
+    .about-signature span { font-size: 0.85rem; color: var(--gray-600); }
+    @media (max-width: 768px) {
+      .about .container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Testimonials */
+    .testimonials { background: var(--white); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--gray-50);
+      border: 1px solid var(--sage-200);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .testimonial-stars { color: #e8b84b; margin-bottom: 1rem; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--green-900); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray-400); }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Contact */
+    .contact { background: var(--gray-50); }
+    .contact .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .contact-info h3 { font-size: 1.5rem; font-weight: 700; color: var(--green-900); margin-bottom: 0.5rem; }
+    .contact-info > p { color: var(--gray-600); margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-detail i {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--sage-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-700);
+      flex-shrink: 0;
+    }
+    .contact-detail strong { display: block; color: var(--green-900); font-size: 0.9rem; }
+    .contact-detail span { font-size: 0.9rem; color: var(--gray-600); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      font-family: 'Inter', sans-serif;
+      padding: 14px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      background: var(--white);
+      color: var(--gray-800);
+      transition: var(--transition);
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--olive-400);
+      box-shadow: 0 0 0 3px rgba(74, 154, 90, 0.1);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form button { align-self: flex-start; }
+    @media (max-width: 768px) {
+      .contact .container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--green-900);
+      color: var(--sage-200);
+      padding: 4rem 0 2rem;
+    }
+    footer .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    footer h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    footer p, footer a { font-size: 0.9rem; color: var(--sage-300); line-height: 2; }
+    footer a:hover { color: var(--white); }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .footer-logo i { color: var(--olive-400); }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage-200);
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--green-700); color: var(--white); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--sage-300);
+    }
+    @media (max-width: 768px) {
+      footer .container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo"><i class="fas fa-leaf"></i> Solis Lawn</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag"><i class="fas fa-check-circle"></i> Serving Silver Spring since 1993</span>
+        <h1>Your Lawn Deserves <span>the Best Care</span></h1>
+        <p>Family-owned lawn and landscaping services built on trust, quality, and over three decades of experience.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Get a Free Quote</a>
+          <a href="#services" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>30+</strong><span>Years Serving MD</span></div>
+          <div class="hero-stat"><strong>2,500+</strong><span>Happy Customers</span></div>
+          <div class="hero-stat"><strong>5.0</strong><span>Average Rating</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://picsum.photos/seed/solis-hero/800/600" alt="Beautifully landscaped lawn" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-item"><i class="fas fa-check-circle"></i> Licensed & Insured</div>
+      <div class="trust-item"><i class="fas fa-hand-holding-heart"></i> Family-Owned</div>
+      <div class="trust-item"><i class="fas fa-leaf"></i> Eco-Friendly Practices</div>
+      <div class="trust-item"><i class="fas fa-trophy"></i> Award-Winning Service</div>
+      <div class="trust-item"><i class="fas fa-clock"></i> On-Time, Every Time</div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">From routine mowing to complete landscape transformations — we handle it all with care.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-cut"></i></div>
+          <h3>Lawn Mowing</h3>
+          <p>Regular mowing, edging, and blowing to keep your lawn looking its best all season long.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-seedling"></i></div>
+          <h3>Mulching</h3>
+          <p>Fresh mulch installation to enrich soil, retain moisture, and give beds a polished look.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-tree"></i></div>
+          <h3>Tree Trimming</h3>
+          <p>Professional pruning and trimming to promote healthy growth and maintain safety.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-flower"></i></div>
+          <h3>Garden Design</h3>
+          <p>Custom garden plans and plantings tailored to your property and personal style.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-broom"></i></div>
+          <h3>Seasonal Cleanups</h3>
+          <p>Spring and fall cleanups including leaf removal, debris clearing, and bed preparation.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-cubes"></i></div>
+          <h3>Hardscaping</h3>
+          <p>Patios, walkways, retaining walls, and more to enhance your outdoor living space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-image">
+        <img src="https://picsum.photos/seed/solis-about/600/400" alt="Solis Lawn team at work" loading="lazy">
+      </div>
+      <div class="about-content">
+        <span class="hero-tag"><i class="fas fa-leaf"></i> Our Story</span>
+        <h2 class="section-title">Family-Owned Since 1993</h2>
+        <p>Founded in Silver Spring over 30 years ago, Solis Lawn & Landscaping Services has grown from a small neighborhood operation into a trusted landscaping partner for hundreds of families in Montgomery County.</p>
+        <p>We take pride in every lawn we mow, every garden we design, and every relationship we build. Our team treats your property like our own — with respect, attention to detail, and a genuine love for the work.</p>
+        <div class="about-signature">
+          <div>
+            <strong>— The Solis Family</strong>
+            <span>Solis Lawn & Landscaping Services</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Hear from our neighbors in Silver Spring.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>"Solis transformed our overgrown backyard into a beautiful garden we actually want to spend time in. Professional, prompt, and a pleasure to work with."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/44?img=32" alt="" loading="lazy">
+            <div>
+              <strong>Sarah Mitchell</strong>
+              <span>Silver Spring, MD</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>"We've used Solis for years — weekly mowing, seasonal cleanups, and a full hardscape patio. Always reliable, always high quality. Highly recommend."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/44?img=11" alt="" loading="lazy">
+            <div>
+              <strong>James Carter</strong>
+              <span>Silver Spring, MD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>Ready for a greener lawn? Reach out for a free, no-obligation estimate.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <i class="fas fa-map-pin"></i>
+            <div>
+              <strong>Office</strong>
+              <span>200 Quaint Acres Dr, Silver Spring, MD 20904</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <span>(301) 625-9100</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <span>team@solislawn.com</span>
+            </div>
+          </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Solis+Lawn+Landscaping+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();alert('Thanks! We\'ll be in touch soon.');">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number">
+        <select required>
+          <option value="">Select a Service</option>
+          <option>Lawn Mowing</option>
+          <option>Mulching</option>
+          <option>Tree Trimming</option>
+          <option>Garden Design</option>
+          <option>Seasonal Cleanups</option>
+          <option>Hardscaping</option>
+          <option>Other</option>
+        </select>
+        <textarea placeholder="Tell us about your project..." required></textarea>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <div class="footer-logo"><i class="fas fa-leaf"></i> Solis Lawn</div>
+        <p>Family-owned lawn and landscaping services serving Silver Spring, MD, and surrounding areas since 1993. We treat every yard like our own.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+          <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Lawn Mowing</a><br>
+        <a href="#services">Mulching</a><br>
+        <a href="#services">Tree Trimming</a><br>
+        <a href="#services">Garden Design</a><br>
+        <a href="#services">Seasonal Cleanups</a><br>
+        <a href="#services">Hardscaping</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+13016259100">(301) 625-9100</a><br>
+        <a href="mailto:team@solislawn.com">team@solislawn.com</a><br>
+        <a href="#contact">Get a Quote</a><br>
+        <a href="#about">Our Story</a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Solis Lawn & Landscaping Services. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

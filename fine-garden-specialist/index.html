@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fine Garden Specialist | Expert Garden Design & Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --green-900: #1a3c2a;
+            --green-800: #22543d;
+            --green-700: #2f6e4e;
+            --green-600: #3d8b63;
+            --green-500: #4ca775;
+            --green-400: #6bc08e;
+            --green-300: #94d4b0;
+            --green-200: #c0e8d0;
+            --green-100: #e2f4ea;
+            --green-50: #f0faf4;
+            --cream: #fcfaf5;
+            --white: #ffffff;
+            --gray-900: #1a1a2e;
+            --gray-700: #3d3d5c;
+            --gray-500: #6b6b80;
+            --gray-400: #8e8ea3;
+            --gray-300: #b5b5c5;
+            --gray-200: #d9d9e4;
+            --gray-100: #f0f0f5;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-700);
+            background: var(--cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.25;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .logo {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--green-800);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--green-500);
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--green-600); }
+
+        .nav-cta {
+            background: var(--green-700);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover { background: var(--green-800) !important; }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-700);
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--green-50) 0%, var(--cream) 60%, var(--white) 100%);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content h1 span {
+            color: var(--green-600);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-500);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--green-700);
+            color: var(--white);
+        }
+
+        .btn-primary:hover { background: var(--green-800); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--green-700);
+            border: 2px solid var(--green-400);
+        }
+
+        .btn-outline:hover { background: var(--green-50); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .hero-stat { text-align: center; }
+
+        .hero-stat-number {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--green-700);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image-accent {
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--green-300);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 28px 0;
+        }
+
+        .trust-bar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .trust-item i {
+            color: var(--green-500);
+            font-size: 1.2rem;
+        }
+
+        /* Sections general */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--green-500);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--gray-500);
+            max-width: 600px;
+            font-size: 1.05rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-header .section-desc {
+            margin: 0 auto;
+        }
+
+        /* Services */
+        #services { background: var(--white); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-300);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: var(--green-100);
+            color: var(--green-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* About */
+        #about { background: var(--green-50); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--green-300);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+
+        .about-text .section-desc {
+            margin-bottom: 20px;
+        }
+
+        .about-text ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .about-text ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .about-text ul li i {
+            color: var(--green-500);
+        }
+
+        /* Testimonials */
+        #testimonials { background: var(--white); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+
+        .testimonial-stars {
+            color: #e8b830;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-500);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author-info strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-900);
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* Contact */
+        #contact { background: var(--green-50); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            background: var(--cream);
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green-500);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info .section-desc {
+            margin-bottom: 28px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--green-100);
+            color: var(--green-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-900);
+        }
+
+        .contact-detail span {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--green-900);
+            color: rgba(255,255,255,0.7);
+            padding: 48px 0 24px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .logo {
+            color: var(--green-300);
+            font-size: 1.15rem;
+        }
+
+        .footer-brand .logo i {
+            color: var(--green-400);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover { color: var(--green-300); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-socials a {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-socials a:hover { color: var(--green-300); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 { font-size: 2.25rem; }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image { order: -1; }
+
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .testimonial-grid { grid-template-columns: 1fr; }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--gray-200);
+                padding: 20px 24px;
+                gap: 16px;
+                box-shadow: var(--shadow-md);
+            }
+
+            .hamburger { display: block; }
+
+            .hero { padding: 48px 0 40px; }
+
+            .hero-content h1 { font-size: 1.85rem; }
+
+            .hero-stats { gap: 24px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .section { padding: 56px 0; }
+
+            .section-title { font-size: 1.75rem; }
+
+            .contact-form { padding: 24px; }
+
+            .footer-main { grid-template-columns: 1fr; }
+
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo"><i class="fa-solid fa-leaf"></i>Fine Garden Specialist</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Expert Garden Design<br><span>&amp; Care</span></h1>
+                <p class="hero-subtitle">Serving Silver Spring and the DC metro area with thoughtful garden design, planting, and year-round maintenance.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Our Services <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">15+</div>
+                        <div class="hero-stat-label">Years Experience</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">500+</div>
+                        <div class="hero-stat-label">Gardens Cared For</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">100%</div>
+                        <div class="hero-stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-accent"></div>
+                <img src="https://picsum.photos/seed/finegarden-hero/800/600" alt="Beautiful garden landscape" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-item"><i class="fa-solid fa-certificate"></i> Licensed &amp; Insured</div>
+            <div class="trust-item"><i class="fa-solid fa-handshake"></i> Free Consultations</div>
+            <div class="trust-item"><i class="fa-solid fa-tree"></i> Organic Practices</div>
+            <div class="trust-item"><i class="fa-solid fa-clock"></i> Reliable Service</div>
+            <div class="trust-item"><i class="fa-solid fa-location-dot"></i> Silver Spring, MD</div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-desc">Comprehensive garden care and design services tailored to your outdoor space.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-pencil-ruler"></i></div>
+                    <h3>Garden Design</h3>
+                    <p>Custom garden layouts and planting plans designed for beauty, function, and year-round interest.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Planting &amp; Bed Design</h3>
+                    <p>Thoughtful plant selection and bed installation that thrives in your landscape and microclimate.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+                    <h3>Garden Maintenance</h3>
+                    <p>Regular care including weeding, mulching, watering, and seasonal cleanup to keep your garden pristine.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-tree"></i></div>
+                    <h3>Tree &amp; Shrub Pruning</h3>
+                    <p>Expert pruning to promote healthy growth, improve structure, and enhance the natural shape of your plants.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-stone"></i></div>
+                    <h3>Hardscaping</h3>
+                    <p>Patios, walkways, retaining walls, and garden structures that complement your outdoor environment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3>Seasonal Color</h3>
+                    <p>Vibrant seasonal flower installations and container gardens to keep your property looking its best year-round.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-accent"></div>
+                    <img src="https://picsum.photos/seed/finegarden-about/600/400" alt="Garden specialist at work" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">Passionate About Beautiful Gardens</h2>
+                    <p class="section-desc">The Fine Garden Specialist brings over 15 years of experience to every project. Based in Silver Spring, MD, we treat every garden as a living work of art — combining horticultural knowledge with thoughtful design to create outdoor spaces that inspire.</p>
+                    <p class="section-desc">Whether you need a complete garden redesign, ongoing maintenance, or expert pruning, our team is dedicated to quality, reliability, and personalized service.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check-circle"></i> Custom designs tailored to your space</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Environmentally conscious practices</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Fully licensed and insured</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Free on-site consultations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Client Feedback</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-desc">We are proud of the relationships we build with our clients.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote>"The Fine Garden Specialist transformed our overgrown backyard into a beautiful, functional space we can enjoy every day. Their attention to detail and plant knowledge is outstanding."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="testimonial-author-info">
+                            <strong>Sarah M.</strong>
+                            <span>Silver Spring, MD</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote>"We've been using their maintenance service for two years now. Reliable, professional, and our garden has never looked better. Highly recommend for anyone serious about their landscape."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div class="testimonial-author-info">
+                            <strong>James R.</strong>
+                            <span>Washington, DC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Get in Touch</div>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-desc">Ready to transform your garden? Reach out for a free consultation.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell us about your garden project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Visit or Call</h3>
+                    <p class="section-desc">We serve Silver Spring and the greater DC metro area.</p>
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <span>8811 Colesville Rd #103, Silver Spring, MD</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <span>(202) 328-6657</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <span>hello@finegardenspecialist.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <strong>Hours</strong>
+                            <span>Mon-Fri 8am-6pm | Sat 9am-4pm</span>
+                        </div>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Fine+Garden+Specialist+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><i class="fa-solid fa-leaf"></i>Fine Garden Specialist</a>
+                    <p>Expert garden design and care for Silver Spring and the DC metro area since 2009.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+12023286657">(202) 328-6657</a></li>
+                        <li><a href="mailto:hello@finegardenspecialist.com">Email Us</a></li>
+                        <li><a href="#contact">Get a Quote</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 The Fine Garden Specialist. All rights reserved.</span>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+
+</body>
+</html>

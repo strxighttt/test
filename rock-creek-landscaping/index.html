@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Creek Landscaping Inc | Professional Landscaping Since 2001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #2d3748;
+      background: #fafaf9;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #1a2e1a;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #5b6e5b;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      font-size: 1.05rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: #2d6a2d;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1f4f1f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,106,45,0.25); }
+    .btn-outline {
+      background: transparent;
+      color: #2d6a2d;
+      border: 2px solid #2d6a2d;
+    }
+    .btn-outline:hover { background: #2d6a2d; color: #fff; transform: translateY(-2px); }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e8eae3;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a2e1a;
+    }
+    .nav-logo i { color: #2d6a2d; margin-right: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3d4f3d;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #2d6a2d; }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: #1a2e1a; cursor: pointer; }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(135deg, #f8faf3 0%, #eef4e6 50%, #f1f5ef 100%);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1a2e1a;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: #2d6a2d; }
+    .hero p {
+      font-size: 1.15rem;
+      color: #4a5f4a;
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+    .hero-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2d6a2d;
+    }
+    .hero-stat-label {
+      font-size: 0.85rem;
+      color: #5b6e5b;
+      margin-top: 2px;
+    }
+
+    /* Trust Bar */
+    .trust-bar {
+      background: #fff;
+      border-top: 1px solid #e8eae3;
+      border-bottom: 1px solid #e8eae3;
+      padding: 28px 0;
+    }
+    .trust-bar .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #4a5f4a;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .trust-item i { color: #2d6a2d; font-size: 1.2rem; }
+
+    /* Services */
+    .services { background: #fff; }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: #fafaf9;
+      border: 1px solid #e8eae3;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover { border-color: #2d6a2d; box-shadow: 0 8px 28px rgba(45,106,45,0.08); transform: translateY(-4px); }
+    .service-card i {
+      font-size: 2.2rem;
+      color: #2d6a2d;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a2e1a;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: #5b6e5b;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-image img {
+      border-radius: 12px;
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .about-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a2e1a;
+    }
+    .about-content p {
+      color: #4a5f4a;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eef4e6;
+      color: #2d6a2d;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    /* Testimonials */
+    .testimonials { background: #f8faf3; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid #e8eae3;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .testimonial-card .stars { color: #eab308; margin-bottom: 12px; }
+    .testimonial-card blockquote {
+      font-size: 1rem;
+      color: #3d4f3d;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-author img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-author strong { font-size: 0.95rem; color: #1a2e1a; }
+    .testimonial-author span { font-size: 0.8rem; color: #5b6e5b; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 16px;
+      border: 1px solid #d4d9ce;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #2d6a2d; }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-info h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 16px; color: #1a2e1a; }
+    .contact-info p { color: #4a5f4a; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .contact-info i { color: #2d6a2d; width: 20px; text-align: center; }
+
+    /* Footer */
+    footer {
+      background: #1a2e1a;
+      color: #c8d6c8;
+      padding: 48px 0 24px;
+    }
+    footer .container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    footer .footer-brand { font-size: 1.2rem; font-weight: 700; color: #e8f0e8; margin-bottom: 8px; }
+    footer .footer-brand i { color: #6a9e6a; margin-right: 6px; }
+    footer p { font-size: 0.9rem; max-width: 400px; margin-bottom: 16px; }
+    .footer-social { display: flex; gap: 16px; margin-bottom: 16px; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      color: #c8d6c8;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover { background: #2d6a2d; color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+      width: 100%;
+      font-size: 0.8rem;
+      color: #8a9e8a;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .section { padding: 56px 0; }
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 64px 0 56px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 16px;
+        border-bottom: 1px solid #e8eae3;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      .service-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .trust-bar .container { gap: 20px; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .service-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo"><i class="fas fa-tree"></i>Rock Creek Landscaping</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem;">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <h1>Expert Landscaping for <span>Rock Creek</span> & Beyond</h1>
+      <p>Rock Creek Landscaping Inc has been transforming outdoor spaces across Silver Spring and the DC metro area with professional, reliable service since 2001.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Get a Free Estimate</a>
+        <a href="#services" class="btn btn-outline"><i class="fas fa-leaf"></i> Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">25+</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">1,000+</div>
+          <div class="hero-stat-label">Properties Served</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">100%</div>
+          <div class="hero-stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> Licensed & Insured</div>
+      <div class="trust-item"><i class="fas fa-trophy"></i> Family-Owned Since 2001</div>
+      <div class="trust-item"><i class="fas fa-leaf"></i> Eco-Friendly Practices</div>
+      <div class="trust-item"><i class="fas fa-thumbs-up"></i> 100% Satisfaction Guarantee</div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">From routine maintenance to complete transformations, we offer a full range of landscaping services for residential and commercial properties.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <i class="fas fa-mower"></i>
+          <h3>Lawn Maintenance</h3>
+          <p>Regular mowing, edging, trimming, and seasonal clean-ups to keep your lawn looking its best year-round.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-tree"></i>
+          <h3>Tree Care</h3>
+          <p>Pruning, trimming, removal, and health assessments to maintain safe and beautiful trees on your property.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-seedling"></i>
+          <h3>Mulching</h3>
+          <p>Professional mulching services to retain moisture, suppress weeds, and enhance the appearance of your beds.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-flower"></i>
+          <h3>Planting</h3>
+          <p>Custom planting design and installation including flowers, shrubs, and trees tailored to your landscape.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-snowplow"></i>
+          <h3>Snow Removal</h3>
+          <p>Reliable snow plowing, shoveling, and de-icing services to keep your driveways and walkways safe in winter.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-cubes"></i>
+          <h3>Hardscaping</h3>
+          <p>Patios, walkways, retaining walls, and outdoor living spaces built with quality materials and craftsmanship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://picsum.photos/seed/rockcreek-about/600/400" alt="Rock Creek Landscaping team at work" loading="lazy">
+        </div>
+        <div class="about-content">
+          <span class="about-badge"><i class="fas fa-calendar-alt"></i> Serving the Community Since 2001</span>
+          <h2>Trusted by Homeowners & Businesses for Over Two Decades</h2>
+          <p>Rock Creek Landscaping Inc is a family-owned and operated business built on a foundation of quality, reliability, and pride in our work. We serve Silver Spring, Rock Creek, and the greater Washington DC metro area.</p>
+          <p>Our team brings years of hands-on experience to every project, treating each property as if it were our own. Whether you need weekly lawn care or a complete landscape redesign, we deliver professional results that exceed expectations.</p>
+          <p>We're fully licensed, insured, and committed to using environmentally responsible practices.</p>
+          <a href="#contact" class="btn btn-primary" style="margin-top:8px;"><i class="fas fa-envelope"></i> Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">We take pride in our work and the relationships we build with our clients.</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Rock Creek Landscaping has been maintaining our property for the past three years. They're professional, punctual, and always leave everything looking immaculate. Highly recommend their team."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://picsum.photos/seed/client1/96/96" alt="" loading="lazy">
+            <div>
+              <strong>Sarah M.</strong>
+              <span>Silver Spring, MD</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"We hired Rock Creek for a full hardscaping project — patio, walkway, and retaining wall. The craftsmanship is outstanding and they stayed on schedule and on budget. Couldn't be happier."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://picsum.photos/seed/client2/96/96" alt="" loading="lazy">
+            <div>
+              <strong>James R.</strong>
+              <span>Bethesda, MD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">Ready to transform your outdoor space? Reach out for a free consultation and estimate.</p>
+      <div class="contact-grid">
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Email Address" required>
+          <input type="tel" placeholder="Phone Number">
+          <textarea placeholder="Tell us about your project..." required></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 824 Gist Ave / 8326 Fenton St, Silver Spring, MD 20910</p>
+          <p><i class="fas fa-phone"></i> <a href="tel:+13019495023" style="color:inherit;">(301) 949-5023</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:info@rockcreeklandscaping.com" style="color:inherit;">info@rockcreeklandscaping.com</a></p>
+          <div class="about-badge" style="margin:16px 0 8px;"><i class="fas fa-clock"></i> Mon–Fri: 7:00 AM – 6:00 PM</div>
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=Rock+Creek+Landscaping+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand"><i class="fas fa-tree"></i> Rock Creek Landscaping Inc</div>
+      <p>Professional landscaping services for the Silver Spring and Washington DC metro area. Family-owned and operated since 2001.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Rock Creek Landscaping Inc. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

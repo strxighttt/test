@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R&G Landscape Construction | Excavation & Grading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      color: #1E293B;
+      background: #FAFAFA;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; color: #1E293B; }
+    h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h3 { font-size: 1.15rem; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #64748B; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Nav */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 700; font-size: 1.3rem; color: #4A6741; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.01em; }
+    .logo i { color: #64748B; font-size: 1.2rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: #64748B; transition: color 0.2s; }
+    .nav-links a:hover { color: #4A6741; }
+    .nav-links .cta {
+      background: #4A6741;
+      color: #fff !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .nav-links .cta:hover { background: #3D5A34; }
+    .nav-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: #4A6741; border-radius: 1px; }
+
+    /* Hero */
+    .hero {
+      background: #4A6741;
+      padding: 4.5rem 0;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.75rem; max-width: 700px; margin: 0 auto 0.75rem; color: #fff; font-weight: 800; letter-spacing: -0.02em; }
+    .hero p { font-size: 1.1rem; max-width: 560px; margin: 0 auto 2rem; color: rgba(255,255,255,0.8); font-weight: 400; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: #fff; color: #4A6741; }
+    .btn-primary:hover { background: #F1F5F9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.5); color: #fff; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+    /* Equipment Badge */
+    .equipment-badge {
+      background: #F1F5F9;
+      text-align: center;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .equipment-badge p { margin: 0; font-weight: 500; color: #1E293B; font-size: 0.9rem; letter-spacing: 0.02em; }
+    .equipment-badge i { color: #64748B; margin: 0 0.3rem; }
+
+    /* Section padding */
+    section { padding: 4rem 0; }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { color: #1E293B; }
+    .section-title p { max-width: 520px; margin: 0 auto; }
+
+    /* Services */
+    .services { background: #F1F5F9; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      border-left: 4px solid #64748B;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .service-card i { font-size: 1.4rem; color: #4A6741; margin-bottom: 0.75rem; }
+    .service-card h3 { margin-bottom: 0.4rem; }
+    .service-card p { font-size: 0.88rem; margin: 0; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-text h2 { color: #1E293B; }
+    .about-text p { margin-bottom: 0.75rem; }
+    .about-decorative {
+      background: linear-gradient(135deg, #4A6741 0%, #64748B 100%);
+      border-radius: 6px;
+      padding: 3rem;
+      text-align: center;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-decorative i { font-size: 4rem; color: rgba(255,255,255,0.9); margin-bottom: 0.75rem; }
+    .about-decorative span { color: rgba(255,255,255,0.7); font-weight: 500; font-size: 0.9rem; letter-spacing: 0.02em; }
+
+    /* Process */
+    .process-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .process-step {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.5rem 1.75rem;
+      text-align: center;
+      flex: 1;
+      max-width: 220px;
+      transition: box-shadow 0.2s;
+    }
+    .process-step:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+    .process-step .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #4A6741;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+    .process-step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .process-step p { font-size: 0.82rem; margin: 0; }
+    .process-arrow { font-size: 1.1rem; color: #64748B; margin: 0 0.5rem; flex-shrink: 0; }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 2rem;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .testimonial-card p { font-size: 0.95rem; color: #1E293B; margin-bottom: 1.25rem; }
+    .testimonial-card .client-name { font-weight: 500; color: #64748B; margin-bottom: 0.5rem; font-size: 0.85rem; }
+    .testimonial-card .stars { display: flex; gap: 0.25rem; }
+    .testimonial-card .stars i { color: #D1D5DB; font-size: 0.85rem; }
+
+    /* Contact */
+    .contact { background: #F1F5F9; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: start; }
+    .contact h2 { color: #1E293B; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: #1E293B;
+      background: #fff;
+      margin-bottom: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #4A6741; }
+    .contact-form textarea { resize: vertical; min-height: 110px; }
+    .contact-form .btn { width: 100%; border: none; background: #4A6741; color: #fff; }
+    .contact-form .btn:hover { background: #3D5A34; }
+    .contact-info h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .contact-info p { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .contact-info i { color: #4A6741; width: 1.2rem; text-align: center; }
+    .contact-note {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: #fff;
+      border-radius: 6px;
+      border-left: 4px solid #EA580C;
+    }
+    .contact-note p { margin: 0; font-size: 0.88rem; color: #1E293B; }
+    .contact-note strong { color: #4A6741; }
+
+    /* Footer */
+    footer {
+      background: #4A6741;
+      color: #fff;
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    footer h4 { font-weight: 700; color: #fff; margin-bottom: 1rem; font-size: 1rem; letter-spacing: 0.01em; }
+    footer p, footer a { color: rgba(255,255,255,0.7); font-size: 0.88rem; display: block; margin-bottom: 0.35rem; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+
+    /* Floating quote */
+    .floating-quote {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+    }
+    .floating-quote a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #4A6741;
+      color: #fff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 16px rgba(74, 103, 65, 0.35);
+      transition: all 0.2s;
+    }
+    .floating-quote a:hover { background: #3D5A34; transform: translateY(-2px); }
+    .floating-quote .orange-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #EA580C;
+      border-radius: 50%;
+      margin-right: 0.15rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1.5rem; border-bottom: 1px solid #E2E8F0; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .hero h1 { font-size: 1.9rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .process-steps { flex-direction: column; gap: 0.75rem; }
+      .process-step { max-width: 100%; width: 100%; }
+      .process-arrow { transform: rotate(90deg); margin: 0.25rem 0; }
+      .floating-quote a span { display: none; }
+      .floating-quote a { padding: 0.85rem; border-radius: 50%; aspect-ratio: 1; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo"><i class="fa-solid fa-helmet-safety"></i> R&amp;G Landscape Construction</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="cta">Request a Bid</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Site Work. Heavy Equipment. Done Right.</h1>
+      <p>Professional excavation, grading, and drainage for residential and commercial projects throughout the region.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Request a Bid</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Badge -->
+  <div class="equipment-badge">
+    <div class="container">
+      <p><i class="fa-solid fa-truck"></i> Heavy Equipment Ready <i class="fa-solid fa-circle" style="font-size: 0.3rem; vertical-align: middle; margin: 0 0.6rem;"></i> Fully Licensed <i class="fa-solid fa-circle" style="font-size: 0.3rem; vertical-align: middle; margin: 0 0.6rem;"></i> Free Site Visits</p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Heavy equipment and experienced operators ready for your next project.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fa-solid fa-mountain"></i>
+          <h3>Excavation &amp; Grading</h3>
+          <p>Precision excavation, land leveling, and site grading for foundations, driveways, and more.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-water"></i>
+          <h3>Drainage Systems</h3>
+          <p>French drains, catch basins, and surface drainage solutions to protect your property.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-wall"></i>
+          <h3>Retaining Walls</h3>
+          <p>Structural block and natural stone walls built to withstand pressure and last for decades.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-road"></i>
+          <h3>Driveways &amp; Base Prep</h3>
+          <p>Stone base, grading, and compaction for asphalt, concrete, and gravel driveways.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-broom"></i>
+          <h3>Site Cleanup</h3>
+          <p>Post-construction debris removal, brush clearing, and lot preparation services.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-tractor"></i>
+          <h3>Heavy Equipment</h3>
+          <p>Skid steer, mini excavator, and dozer services for projects of any scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2>Built on Experience. Driven by Precision.</h2>
+        <p>R&amp;G Landscape Construction brings years of hands-on experience in site work, heavy equipment operation, and drainage engineering. We don't just move dirt — we solve problems.</p>
+        <p>Every project starts with a thorough site evaluation and a clear plan. Whether we're grading a new build, fixing a drainage issue, or prepping a driveway base, our team approaches each job with precision, safety, and efficiency.</p>
+        <p style="font-weight: 600; color: #4A6741;">No shortcuts. No surprises. Just solid work.</p>
+      </div>
+      <div class="about-decorative">
+        <img src="https://picsum.photos/seed/rg-about/600/400" alt=" " style="width:100%;height:100%;object-fit:cover" />
+        <span>Heavy equipment · Precision grading · Reliable results</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="services" style="background: #FAFAFA;">
+    <div class="container">
+      <div class="section-title">
+        <h2>How We Work</h2>
+        <p>A straightforward process from start to finish.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="number">1</div>
+          <h4>Site Visit</h4>
+          <p>We assess your property, discuss your needs, and take measurements on site.</p>
+        </div>
+        <div class="process-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="process-step">
+          <div class="number">2</div>
+          <h4>Proposal</h4>
+          <p>You receive a detailed written estimate with scope, timeline, and pricing.</p>
+        </div>
+        <div class="process-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="process-step">
+          <div class="number">3</div>
+          <h4>Construction</h4>
+          <p>Our team mobilizes equipment and executes the plan with precision and efficiency.</p>
+        </div>
+        <div class="process-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="process-step">
+          <div class="number">4</div>
+          <h4>Final Walkthrough</h4>
+          <p>We review the completed work with you to ensure everything meets your expectations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client Testimonials</h2>
+        <p>Here's what property owners and contractors say about working with us.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>&ldquo;Share your experience here — add a real client testimonial.&rdquo;</p>
+          <div class="client-name">[Client Name]</div>
+          <div class="stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>&ldquo;Share your experience here — add a real client testimonial.&rdquo;</p>
+          <div class="client-name">[Client Name]</div>
+          <div class="stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Request a Bid</h2>
+        <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number">
+            <input type="text" placeholder="Project Location">
+            <textarea placeholder="Describe your project — excavation, grading, drainage, etc."></textarea>
+            <button type="submit" class="btn">Submit Request</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i class="fa-solid fa-phone"></i> (240) 505-2341</p>
+          <p><i class="fa-regular fa-envelope"></i> info@rglandscapeconstruction.com</p>
+          <p><i class="fa-regular fa-clock"></i> Mon – Fri: 7am – 5pm</p>
+          <p><i class="fa-regular fa-clock"></i> Sat: 8am – 12pm</p>
+          <div class="contact-note">
+            <p><strong>Free site visits</strong> — we'll come out, take a look, and give you a straight answer. No commitment needed.</p>
+          </div>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=R%26G+Landscape+Construction+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:6px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-helmet-safety" style="margin-right: 0.4rem;"></i> R&amp;G Landscape Construction</h4>
+        <p>Professional excavation, grading, and drainage services built on experience and reliability.</p>
+        <p style="margin-top: 0.75rem; color: rgba(255,255,255,0.5); font-size: 0.82rem;">Heavy equipment ready · Fully licensed · Free site visits</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#services">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#process">Our Process</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-phone" style="margin-right: 0.4rem;"></i> (240) 505-2341</p>
+        <p><i class="fa-regular fa-envelope" style="margin-right: 0.4rem;"></i> info@rglandscapeconstruction.com</p>
+        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.5);">Serving the greater Washington, DC area</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 R&amp;G Landscape Construction. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <div class="floating-quote">
+    <a href="tel:2405052341">
+      <span class="orange-dot"></span>
+      <i class="fa-solid fa-phone"></i>
+      <span>(240) 505-2341</span>
+    </a>
+  </div>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

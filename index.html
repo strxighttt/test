@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tulip Valley Landscaping | Silver Spring, MD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-900: #2D4A3E;
+      --green-700: #4A7C59;
+      --green-500: #6B8F71;
+      --green-200: #D4E4D6;
+      --green-50: #F0F5F0;
+      --blush: #D4A5B4;
+      --blush-light: #F2DEE6;
+      --blush-dark: #B88298;
+      --cream: #FAF7F4;
+      --white: #FFFFFF;
+      --gray-800: #2D2D2D;
+      --gray-600: #5A5A5A;
+      --gray-400: #9A9A9A;
+      --shadow: 0 4px 24px rgba(45, 74, 62, 0.08);
+      --shadow-lg: 0 12px 48px rgba(45, 74, 62, 0.12);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --max-width: 1200px;
+      --font-heading: 'Fraunces', Georgia, serif;
+      --font-body: 'Work Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-800);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 600; line-height: 1.2; }
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 0.5em; }
+    h2 span { color: var(--blush-dark); }
+    p { color: var(--gray-600); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: var(--white); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 50px;
+      font-family: var(--font-body); font-weight: 600; font-size: 1rem;
+      border: none; cursor: pointer; transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: var(--green-700); color: var(--white);
+      box-shadow: 0 4px 16px rgba(74, 124, 89, 0.3);
+    }
+    .btn-primary:hover { background: var(--green-900); transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--blush); color: var(--white);
+      box-shadow: 0 4px 16px rgba(212, 165, 180, 0.3);
+    }
+    .btn-secondary:hover { background: var(--blush-dark); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--green-700);
+      border: 2px solid var(--green-700);
+    }
+    .btn-outline:hover { background: var(--green-700); color: var(--white); }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--blush-dark);
+      margin-bottom: 8px;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--green-200);
+      padding: 16px 0;
+      animation: navSlideIn 0.8s ease 0.6s both;
+    }
+    @keyframes navSlideIn {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700;
+      color: var(--green-900);
+    }
+    .logo i { color: var(--blush-dark); margin-right: 6px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: var(--gray-600);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { display: none; }
+    @media (min-width: 900px) {
+      .nav-cta { display: inline-flex; padding: 10px 24px; font-size: 0.85rem; }
+    }
+    .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--green-900); cursor: pointer; }
+    @media (max-width: 899px) {
+      .mobile-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; gap: 16px; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 24px; border-bottom: 1px solid var(--green-200); }
+      .nav-links.open { display: flex; }
+    }
+
+    /* Splash Screen */
+    #splash {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: var(--green-900);
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash-icon {
+      font-size: 4rem; color: var(--blush);
+      animation: splashPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes splashPulse {
+      0% { transform: scale(0.6); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .splash-text {
+      font-family: var(--font-heading); font-size: 1.8rem; color: var(--white);
+      margin-top: 20px; animation: splashFadeUp 0.8s ease 0.4s both;
+    }
+    @keyframes splashFadeUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .splash-loader {
+      margin-top: 32px; width: 48px; height: 48px;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: var(--blush);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, var(--green-50) 0%, var(--cream) 50%, var(--blush-light) 100%);
+      padding-top: 100px;
+    }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--green-900); margin-bottom: 20px; }
+    .hero-content h1 em { font-style: italic; color: var(--blush-dark); }
+    .hero-tagline { font-size: 1.15rem; color: var(--gray-600); margin-bottom: 32px; max-width: 500px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); padding: 10px 20px; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 500; margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero-badge i { color: #F4B942; }
+    .hero-badge strong { color: var(--green-900); }
+    .hero-badge span { color: var(--gray-400); }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-image {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-image img { width: 100%; height: 500px; object-fit: cover; }
+    @media (max-width: 899px) {
+      .hero .container { grid-template-columns: 1fr; text-align: center; }
+      .hero-tagline { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-image { display: none; }
+    }
+
+    /* About */
+    .about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .about-image div { width: 100%; height: 450px; }
+    .about-text p { margin-bottom: 16px; font-size: 1.05rem; }
+    .about-signature { font-family: var(--font-heading); font-style: italic; color: var(--green-700); font-size: 1.1rem; margin-top: 24px; }
+    @media (max-width: 899px) {
+      .about .container { grid-template-columns: 1fr; }
+      .about-image { display: none; }
+    }
+
+    /* Services */
+    .services-header { text-align: center; margin-bottom: 48px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+    }
+    .service-card {
+      background: var(--white); border-radius: var(--radius); padding: 36px 28px;
+      box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--green-200);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: var(--green-50); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.5rem; color: var(--green-700);
+    }
+    .service-card h3 { font-size: 1.25rem; margin-bottom: 10px; color: var(--green-900); }
+    .service-card p { font-size: 0.95rem; }
+
+    /* Gallery */
+    .gallery-header { text-align: center; margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      grid-auto-rows: 240px;
+    }
+    .gallery-item {
+      border-radius: var(--radius); overflow: hidden; position: relative;
+      box-shadow: var(--shadow);
+    }
+    .gallery-item div { width: 100%; height: 100%; }
+    .gallery-item:hover div img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+      background: linear-gradient(transparent, rgba(45,74,62,0.7));
+      color: var(--white); opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay p { color: var(--white); font-size: 0.85rem; font-weight: 500; }
+    .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+    }
+
+    /* Why Us */
+    .why-header { text-align: center; margin-bottom: 48px; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+    .why-item { text-align: center; padding: 32px 20px; }
+    .why-number {
+      font-family: var(--font-heading); font-size: 3rem; font-weight: 700;
+      color: var(--blush); line-height: 1; margin-bottom: 12px;
+    }
+    .why-item h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--green-900); }
+    .why-item p { font-size: 0.95rem; }
+
+    /* Testimonials */
+    .testimonials-header { text-align: center; margin-bottom: 48px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .testimonial-card {
+      background: var(--white); border-radius: var(--radius); padding: 32px;
+      box-shadow: var(--shadow); border: 1px solid var(--green-200);
+    }
+    .testimonial-stars { color: #F4B942; font-size: 0.9rem; margin-bottom: 12px; }
+    .testimonial-card blockquote { font-size: 1rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 16px; font-style: italic; }
+    .testimonial-card cite { font-style: normal; font-weight: 600; color: var(--green-900); font-size: 0.9rem; }
+
+    /* Service Area */
+    .area-header { text-align: center; margin-bottom: 32px; }
+    .area-content { text-align: center; font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+    .area-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+    .area-tag {
+      padding: 8px 20px; border-radius: 50px; background: var(--green-50);
+      color: var(--green-700); font-weight: 500; font-size: 0.9rem;
+    }
+
+    /* Contact */
+    .contact .container { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-header { margin-bottom: 32px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      padding: 14px 18px; border: 1px solid var(--green-200); border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.95rem; background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--green-700); box-shadow: 0 0 0 3px rgba(74,124,89,0.1);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-info-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-info-item i { color: var(--blush-dark); font-size: 1.2rem; margin-top: 4px; width: 24px; }
+    .contact-info-item div h4 { font-size: 1rem; color: var(--green-900); margin-bottom: 2px; }
+    .contact-info-item div p { font-size: 0.95rem; }
+    .contact-map { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-top: 24px; }
+    .contact-map iframe { width: 100%; height: 240px; border: 0; }
+    @media (max-width: 899px) {
+      .contact .container { grid-template-columns: 1fr; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--green-900); color: var(--green-200); padding: 48px 0 24px;
+    }
+    footer .container { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+    footer h4 { font-family: var(--font-heading); color: var(--white); margin-bottom: 16px; font-size: 1.1rem; }
+    footer p, footer a { font-size: 0.9rem; color: var(--green-200); line-height: 2; }
+    footer a:hover { color: var(--blush-light); }
+    .footer-social { display: flex; gap: 16px; margin-top: 12px; }
+    .footer-social a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); display: flex;
+      align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .footer-social a:hover { background: var(--blush-dark); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 32px; padding-top: 20px; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 768px) {
+      footer .container { grid-template-columns: 1fr; text-align: center; }
+      .footer-social { justify-content: center; }
+    }
+
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      display: none; animation: fadeInUp 0.6s ease 1.5s both;
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .sticky-cta .btn { padding: 16px 28px; box-shadow: 0 8px 32px rgba(74,124,89,0.4); }
+    @media (max-width: 899px) {
+      .sticky-cta { display: block; }
+    }
+
+    /* Placeholder styles */
+    .placeholder-img {
+      background: linear-gradient(135deg, var(--green-200), var(--blush-light));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-700); font-family: var(--font-heading);
+      font-size: 1rem; font-weight: 500;
+    }
+    .placeholder-img i { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Hero stagger */
+    .hero-anim { opacity: 0; transform: translateY(30px); animation: heroStagger 0.8s ease forwards; }
+    .hero-anim:nth-child(1) { animation-delay: 0.8s; }
+    .hero-anim:nth-child(2) { animation-delay: 1s; }
+    .hero-anim:nth-child(3) { animation-delay: 1.2s; }
+    .hero-anim:nth-child(4) { animation-delay: 1.4s; }
+    @keyframes heroStagger {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <div class="splash-icon"><i class="fas fa-leaf"></i></div>
+    <div class="splash-text">Tulip Valley Landscaping</div>
+    <div class="splash-loader"></div>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo"><i class="fas fa-leaf"></i>Tulip Valley</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Portfolio</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">Request Consultation</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-anim hero-badge">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          <strong>4.7</strong>
+          <span>&middot; 6 Google reviews</span>
+        </div>
+        <h1 class="hero-anim">Custom Landscape Design<br/>for <em>Silver Spring</em> Homes</h1>
+        <p class="hero-anim hero-tagline">We craft outdoor spaces that reflect your personality — blending artistry, native plants, and thoughtful hardscaping into landscapes you'll love coming home to.</p>
+        <div class="hero-anim hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Request a Design Consultation</a>
+          <a href="#gallery" class="btn btn-outline">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-anim hero-image">
+        <div class="placeholder-img" style="height:500px;flex-direction:column"><i class="fas fa-tree"></i> Garden Design — Silver Spring, MD</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-image reveal-left">
+        <div class="placeholder-img" style="height:450px;flex-direction:column"><i class="fas fa-seedling"></i> Tulip Valley Team</div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="section-label">About Us</span>
+        <h2>Bringing <span>Design-First</span> Landscapes to Montgomery County</h2>
+        <p>Tulip Valley Landscaping was founded on a simple belief: your outdoor space should be as thoughtfully designed as the inside of your home. Based in Silver Spring, we specialize in custom landscape design that balances beauty, functionality, and the unique character of your property.</p>
+        <p>From intimate garden beds to full property transformations, we partner with homeowners who care about quality — combining horticultural knowledge with a refined design eye. Every project starts with a conversation, a site walk, and a vision for what your yard could become.</p>
+        <p>We're proud to serve our local community with reliable, detail-driven execution. No two landscapes are alike, and neither are our designs.</p>
+        <div class="about-signature">&mdash; Founded in Silver Spring</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="section-label">What We Do</span>
+        <h2>Full-Service <span>Landscape Design</span></h2>
+        <p style="max-width:600px;margin:0 auto">From concept to completion, we handle every detail of your outdoor transformation.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h3>Landscape Design &amp; Planning</h3>
+          <p>Custom master plans, 3D renderings, and plant palettes tailored to your home and lifestyle.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <div class="service-icon"><i class="fas fa-flower"></i></div>
+          <h3>Garden Bed Design &amp; Installation</h3>
+          <p>Perennial borders, foundation plantings, and layered garden compositions that thrive year-round.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <div class="service-icon"><i class="fas fa-cubes"></i></div>
+          <h3>Hardscaping</h3>
+          <p>Patios, walkways, retaining walls, and stone features built to last with premium materials.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.4s">
+          <div class="service-icon"><i class="fas fa-leaf"></i></div>
+          <h3>Planting &amp; Seasonal Color</h3>
+          <p>Native and adapted plant selections, seasonal rotations, and pollinator-friendly gardens.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.5s">
+          <div class="service-icon"><i class="fas fa-tractor"></i></div>
+          <h3>Lawn Care &amp; Maintenance</h3>
+          <p>Healthy turf management, pruning, mulching, and ongoing care to keep your landscape pristine.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:0.6s">
+          <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>Outdoor Lighting</h3>
+          <p>Ambient path lighting, uplighting for trees and architecture, and custom low-voltage systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <span class="section-label">Portfolio</span>
+        <h2>Recent <span>Projects</span></h2>
+        <p style="max-width:600px;margin:0 auto">A glimpse of our work around Silver Spring and Montgomery County.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal-scale" style="transition-delay:0.1s">
+          <div class="placeholder-img" style="height:100%;flex-direction:column"><i class="fas fa-image"></i> Full Property Transformation</div>
+          <div class="gallery-overlay"><p>Full Property Transformation &mdash; Silver Spring</p></div>
+        </div>
+        <div class="gallery-item reveal-scale" style="transition-delay:0.2s">
+          <div class="placeholder-img" style="height:100%;flex-direction:column"><i class="fas fa-image"></i> Patio &amp; Hardscape</div>
+          <div class="gallery-overlay"><p>Flagstone Patio &amp; Walkway</p></div>
+        </div>
+        <div class="gallery-item reveal-scale" style="transition-delay:0.3s">
+          <div class="placeholder-img" style="height:100%;flex-direction:column"><i class="fas fa-image"></i> Garden Design</div>
+          <div class="gallery-overlay"><p>Perennial Garden Border</p></div>
+        </div>
+        <div class="gallery-item reveal-scale" style="transition-delay:0.4s">
+          <div class="placeholder-img" style="height:100%;flex-direction:column"><i class="fas fa-image"></i> Outdoor Lighting</div>
+          <div class="gallery-overlay"><p>Evening Landscape Lighting</p></div>
+        </div>
+        <div class="gallery-item reveal-scale" style="transition-delay:0.5s">
+          <div class="placeholder-img" style="height:100%;flex-direction:column"><i class="fas fa-image"></i> Retaining Wall</div>
+          <div class="gallery-overlay"><p>Natural Stone Retaining Wall</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="why-us">
+    <div class="container">
+      <div class="why-header reveal">
+        <span class="section-label">Why Tulip Valley</span>
+        <h2>Designed for You. <span>Built to Last.</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal" style="transition-delay:0.1s">
+          <div class="why-number">01</div>
+          <h3>Personalized Design Approach</h3>
+          <p>We listen to your vision, study your property, and create a plan that's uniquely yours — no cookie-cutter landscapes.</p>
+        </div>
+        <div class="why-item reveal" style="transition-delay:0.2s">
+          <div class="why-number">02</div>
+          <h3>Attention to Detail</h3>
+          <p>From plant spacing to stone placement, every element is carefully considered and precisely executed.</p>
+        </div>
+        <div class="why-item reveal" style="transition-delay:0.3s">
+          <div class="why-number">03</div>
+          <h3>Local Expertise</h3>
+          <p>We know Montgomery County's climate, soil, and native plants — so your landscape thrives season after season.</p>
+        </div>
+        <div class="why-item reveal" style="transition-delay:0.4s">
+          <div class="why-number">04</div>
+          <h3>Reliable Execution</h3>
+          <p>We show up on time, communicate clearly, and deliver on our promises. Your project, handled with care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <span class="section-label">Testimonials</span>
+        <h2>What Our <span>Clients Say</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal" style="transition-delay:0.1s">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Tulip Valley transformed our overgrown backyard into a stunning entertainment space. Their design sense is incredible — we use the patio and garden every single evening."</blockquote>
+          <cite>&mdash; Sarah M., Silver Spring</cite>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.2s">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"From the initial consultation to the final walkthrough, everything was professional and thoughtful. Our front yard has never looked better."</blockquote>
+          <cite>&mdash; David L., Takoma Park</cite>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.3s">
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <blockquote>"They really know plants. The garden they designed for us blooms from early spring through fall — it's a pollinator paradise and absolutely gorgeous."</blockquote>
+          <cite>&mdash; Emily R., Olney</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section id="service-area">
+    <div class="container">
+      <div class="area-header reveal">
+        <span class="section-label">Service Area</span>
+        <h2>Proudly Serving <span>Montgomery County</span></h2>
+      </div>
+      <div class="area-content reveal">
+        <p>Based in Silver Spring, we work with homeowners throughout Montgomery County and nearby communities. If you're looking for a design-forward landscape partner, we'd love to hear from you.</p>
+        <div class="area-tags">
+          <span class="area-tag reveal" style="transition-delay:0.1s">Silver Spring</span>
+          <span class="area-tag reveal" style="transition-delay:0.15s">Takoma Park</span>
+          <span class="area-tag reveal" style="transition-delay:0.2s">Bethesda</span>
+          <span class="area-tag reveal" style="transition-delay:0.25s">Rockville</span>
+          <span class="area-tag reveal" style="transition-delay:0.3s">Olney</span>
+          <span class="area-tag reveal" style="transition-delay:0.35s">Kensington</span>
+          <span class="area-tag reveal" style="transition-delay:0.4s">Chevy Chase</span>
+          <span class="area-tag reveal" style="transition-delay:0.45s">Wheaton</span>
+          <span class="area-tag reveal" style="transition-delay:0.5s">Washington DC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="reveal-left">
+        <div class="contact-header">
+          <span class="section-label">Get in Touch</span>
+          <h2>Let's Design Your <span>Outdoor Space</span></h2>
+          <p>Tell us about your project and we'll schedule a consultation at your property.</p>
+        </div>
+        <form class="contact-form">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <input type="text" placeholder="Full Name" required />
+            <input type="tel" placeholder="Phone Number" required />
+          </div>
+          <input type="email" placeholder="Email Address" required />
+          <input type="text" placeholder="Property Address" />
+          <select>
+            <option value="">Project Type</option>
+            <option>Full Landscape Design</option>
+            <option>Garden Design</option>
+            <option>Hardscaping</option>
+            <option>Planting &amp; Seasonal Color</option>
+            <option>Outdoor Lighting</option>
+            <option>Lawn Care &amp; Maintenance</option>
+            <option>Other</option>
+          </select>
+          <textarea placeholder="Tell us about your vision for the space..."></textarea>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Request</button>
+            <a href="tel:+12403702867" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Call (240) 370-2867</a>
+          </div>
+        </form>
+      </div>
+      <div class="reveal-right">
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Visit Us</h4>
+              <p>13218 Hathaway Dr<br/>Silver Spring, MD 20906</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Call or Text</h4>
+              <p><a href="tel:+12403702867">(240) 370-2867</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon &ndash; Fri: 7 AM &ndash; 6 PM<br/>Saturday: 8 AM &ndash; 4 PM<br/>Sunday: Closed</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.87215654065!2d-77.0569793!3d39.1270233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7cee2f1b2e2e1%3A0x8b1b2e2e1f2e1b2e!2s13218%20Hathaway%20Dr%2C%20Silver%20Spring%2C%20MD%2020906!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <h4><i class="fas fa-leaf" style="color:var(--blush);margin-right:8px"></i>Tulip Valley Landscaping</h4>
+        <p>Custom landscape design rooted in Silver Spring. We create outdoor spaces as unique as your home.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Houzz"><i class="fab fa-houzz"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#about">About</a></p>
+        <p><a href="#services">Services</a></p>
+        <p><a href="#gallery">Portfolio</a></p>
+        <p><a href="#testimonials">Testimonials</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>13218 Hathaway Dr<br/>Silver Spring, MD 20906</p>
+        <p><a href="tel:+12403702867">(240) 370-2867</a></p>
+        <p>Mon &ndash; Fri: 7 AM &ndash; 6 PM<br/>Sat: 8 AM &ndash; 4 PM<br/>Sun: Closed</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; 2026 Tulip Valley Landscaping. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
+    <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Request Consultation</a>
+  </div>
+
+  <script>
+    // Splash screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').classList.add('hidden');
+      }, 2000);
+    });
+
+    // Mobile nav toggle
+    document.getElementById('mobileToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

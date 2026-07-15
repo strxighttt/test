@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miller Landscapes LLC | Family-Run Landscaping Silver Spring, MD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      color: #292524;
+      background: #FEFAE0;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; line-height: 1.25; color: #292524; }
+    h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #78716C; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Nav */
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(61, 90, 36, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 1.35rem; color: #3D5A24; display: flex; align-items: center; gap: 0.5rem; }
+    .logo i { color: #6B8E4E; font-size: 1.25rem; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #78716C; transition: color 0.2s; }
+    .nav-links a:hover { color: #3D5A24; }
+    .nav-links .cta {
+      background: #3D5A24;
+      color: #fff !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    .nav-links .cta:hover { background: #4A6E2E; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #3D5A24; border-radius: 2px; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(61, 90, 36, 0.06) 0%, rgba(212, 163, 115, 0.08) 100%);
+    }
+    .hero h1 { font-size: 2.85rem; max-width: 720px; margin: 0 auto 1rem; color: #3D5A24; }
+    .hero p { font-size: 1.1rem; max-width: 540px; margin: 0 auto 2rem; color: #78716C; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: #3D5A24; color: #fff; }
+    .btn-primary:hover { background: #4A6E2E; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(61, 90, 36, 0.25); }
+    .btn-outline { border: 2px solid #D4A373; color: #3D5A24; }
+    .btn-outline:hover { background: #D4A373; color: #fff; }
+
+    /* Family Badge */
+    .family-badge {
+      background: #FAF5EB;
+      text-align: center;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid rgba(212, 163, 115, 0.25);
+      border-bottom: 1px solid rgba(212, 163, 115, 0.25);
+    }
+    .family-badge p { margin: 0; font-weight: 500; color: #3D5A24; font-size: 0.95rem; }
+    .family-badge i { color: #D4A373; margin-right: 0.4rem; }
+
+    /* Section padding */
+    section { padding: 4rem 0; }
+    .section-title { text-align: center; margin-bottom: 3rem; }
+    .section-title h2 { color: #3D5A24; }
+    .section-title p { max-width: 500px; margin: 0 auto; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-decorative {
+      background: linear-gradient(135deg, #3D5A24 0%, #6B8E4E 100%);
+      border-radius: 8px;
+      padding: 3rem;
+      text-align: center;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-decorative i { font-size: 4rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+    .about-decorative span { color: rgba(255,255,255,0.7); font-family: 'Source Serif 4', Georgia, serif; font-size: 0.95rem; }
+    .about-text h2 { color: #3D5A24; }
+    .about-text p { margin-bottom: 0.75rem; }
+
+    /* Services */
+    .services { background: #FAF5EB; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card {
+      background: #FEFAE0;
+      border-radius: 8px;
+      padding: 1.75rem 1.5rem;
+      border-top: 4px solid #3D5A24;
+      box-shadow: 0 2px 8px rgba(61, 90, 36, 0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(61, 90, 36, 0.1); }
+    .service-card i { font-size: 1.5rem; color: #6B8E4E; margin-bottom: 0.75rem; }
+    .service-card h3 { margin-bottom: 0.4rem; }
+    .service-card p { font-size: 0.9rem; margin: 0; }
+
+    /* Trust Badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .trust-badge { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .trust-badge i { font-size: 1.5rem; color: #D4A373; }
+    .trust-badge span { font-weight: 500; color: #292524; font-size: 0.95rem; }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .testimonial-card {
+      background: #FAF5EB;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(61, 90, 36, 0.05);
+    }
+    .testimonial-card p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem; color: #292524; font-style: italic; margin-bottom: 1.25rem; }
+    .testimonial-card .client-name { font-weight: 500; color: #78716C; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .testimonial-card .stars { display: flex; gap: 0.25rem; }
+    .testimonial-card .stars i { color: #D1D5DB; font-size: 0.9rem; }
+
+    /* Contact */
+    .contact { background: #FAF5EB; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-info h2 { color: #3D5A24; }
+    .contact-info p { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+    .contact-info i { color: #6B8E4E; width: 1.2rem; text-align: center; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #D4A373;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #292524;
+      background: #fff;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { outline: none; border-color: #3D5A24; }
+    .contact-form textarea { resize: vertical; min-height: 110px; }
+    .contact-form .btn { width: 100%; border: none; }
+
+    /* Footer */
+    footer {
+      background: #3D5A24;
+      color: #FEFAE0;
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    footer h4 { font-family: 'Source Serif 4', Georgia, serif; color: #FEFAE0; font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem; }
+    footer p, footer a { color: rgba(254, 250, 224, 0.75); font-size: 0.9rem; display: block; margin-bottom: 0.4rem; }
+    footer a:hover { color: #FEFAE0; }
+    .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(254, 250, 224, 0.15); font-size: 0.85rem; color: rgba(254, 250, 224, 0.6); }
+
+    /* Floating quote */
+    .floating-quote {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+    }
+    .floating-quote a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #3D5A24;
+      color: #fff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(61, 90, 36, 0.35);
+      transition: all 0.25s;
+    }
+    .floating-quote a:hover { background: #4A6E2E; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(61, 90, 36, 0.4); }
+    .floating-quote i { font-size: 1.1rem; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .hero h1 { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .floating-quote a span { display: none; }
+      .floating-quote a { padding: 0.85rem; border-radius: 50%; aspect-ratio: 1; }
+      .trust-badges { gap: 1.5rem; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo"><i class="fa-solid fa-tree"></i> Miller Landscapes</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="cta">Free Estimate</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Rooted in Quality. Serving Silver Spring.</h1>
+      <p>Family-owned and operated since 2003 — we treat every yard like our own.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Badge -->
+  <div class="family-badge">
+    <div class="container">
+      <p><i class="fa-solid fa-seedling"></i> Family Owned &amp; Operated — Ask About Our Referral Program</p>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-decorative">
+        <img src="https://picsum.photos/seed/miller-lawn/600/400" alt="Landscaping" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" />
+        <span>Proudly serving Silver Spring since 2003</span>
+      </div>
+      <div class="about-text">
+        <h2>Caring for Silver Spring, One Yard at a Time</h2>
+        <p>At Miller Landscapes, family is at the heart of everything we do. What started as a small weekend operation has grown into a trusted landscaping company built on reliability, integrity, and old-fashioned hard work.</p>
+        <p>We believe in showing up on time, doing the job right the first time, and treating our customers like neighbors — because they are. From routine lawn care to full property transformations, we bring the same care to every job, big or small.</p>
+        <p style="font-weight: 500; color: #3D5A24;">Quality you can count on. From a family you can trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Everything your property needs to look its best, year-round.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fa-solid fa-leaf"></i>
+          <h3>Lawn Maintenance</h3>
+          <p>Weekly or bi-weekly mowing, edging, blowing, and trimming to keep your lawn pristine.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-seedling"></i>
+          <h3>Mulching &amp; Bed Care</h3>
+          <p>Fresh mulch, weed control, and perennial bed maintenance for vibrant landscapes.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-scissors"></i>
+          <h3>Hedge &amp; Shrub Trimming</h3>
+          <p>Precision pruning to shape and maintain healthy shrubs, hedges, and ornamental plants.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-broom"></i>
+          <h3>Leaf &amp; Debris Cleanup</h3>
+          <p>Thorough seasonal cleanup including leaf removal, debris hauling, and yard waste disposal.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <h3>Seeding &amp; Sod</h3>
+          <p>Patch repair, overseeding, and full sod installation to restore thick, healthy turf.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-snowplow"></i>
+          <h3>Snow Removal</h3>
+          <p>Reliable plowing, shoveling, and salt treatment for driveways and walkways all winter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section style="padding: 2.5rem 0;">
+    <div class="container trust-badges">
+      <div class="trust-badge">
+        <i class="fa-regular fa-file-lines"></i>
+        <span>Free Estimates</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fa-regular fa-circle-check"></i>
+        <span>Licensed &amp; Insured</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fa-regular fa-heart"></i>
+        <span>Family Operated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="services" style="background: #FEFAE0;">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Clients Say</h2>
+        <p>We let our work speak for itself — but here's what others have to say.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>&ldquo;Share your experience here — add a real client testimonial.&rdquo;</p>
+          <div class="client-name">[Client Name]</div>
+          <div class="stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p>&ldquo;Share your experience here — add a real client testimonial.&rdquo;</p>
+          <div class="client-name">[Client Name]</div>
+          <div class="stars">
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get in Touch</h2>
+        <p>Ready for a quote? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem;">Stop By or Call</h3>
+          <p><i class="fa-solid fa-location-dot"></i> 8913 Brookville Rd, Silver Spring, MD</p>
+          <p><i class="fa-solid fa-phone"></i> (301) 512-6572</p>
+          <p><i class="fa-regular fa-envelope"></i> info@millerlandscapesllc.com</p>
+          <p><i class="fa-regular fa-clock"></i> Mon – Sat: 7am – 6pm</p>
+          <div style="margin-top: 1.5rem; padding: 1.25rem; background: rgba(61, 90, 36, 0.06); border-radius: 8px; border-left: 4px solid #D4A373;">
+            <p style="margin: 0; font-size: 0.9rem; color: #292524;"><strong style="color: #3D5A24;">Free estimates</strong> — no obligation, no pressure. Just honest advice from a neighbor who cares.</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number">
+            <textarea placeholder="Tell us about your project..."></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=8913+Brookville+Rd+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-tree" style="margin-right: 0.4rem;"></i> Miller Landscapes</h4>
+        <p>Family-run landscaping serving Silver Spring and surrounding areas since 2003.</p>
+        <p style="margin-top: 0.75rem;"><i class="fa-regular fa-heart" style="margin-right: 0.3rem;"></i> Built on trust, one yard at a time.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#services">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-location-dot" style="margin-right: 0.4rem;"></i> 8913 Brookville Rd</p>
+        <p>Silver Spring, MD 20910</p>
+        <p style="margin-top: 0.5rem;"><i class="fa-solid fa-phone" style="margin-right: 0.4rem;"></i> (301) 512-6572</p>
+        <p><i class="fa-regular fa-envelope" style="margin-right: 0.4rem;"></i> info@millerlandscapesllc.com</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 Miller Landscapes LLC. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <div class="floating-quote">
+    <a href="tel:3015126572">
+      <i class="fa-solid fa-phone"></i>
+      <span>(301) 512-6572</span>
+    </a>
+  </div>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

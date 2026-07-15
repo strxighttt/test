@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D&L Landscaping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Work Sans', sans-serif; color: #1F2937; background: #FFFFFF; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; font-family: 'Work Sans', sans-serif; }
+    .btn-primary { background: #16A34A; color: #fff; }
+    .btn-primary:hover { background: #15803D; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22, 163, 74, 0.3); }
+    .btn-outline { background: transparent; color: #16A34A; border: 2px solid #16A34A; }
+    .btn-outline:hover { background: #16A34A; color: #fff; transform: translateY(-2px); }
+
+    h1 { font-size: 56px; font-weight: 700; line-height: 1.15; letter-spacing: -1px; }
+    h2 { font-size: 40px; font-weight: 700; text-align: center; margin-bottom: 16px; letter-spacing: -0.5px; }
+    h3 { font-size: 22px; font-weight: 600; }
+    .section-subtitle { text-align: center; color: #6B7280; font-size: 18px; max-width: 600px; margin: 0 auto 48px; }
+
+    /* Nav */
+    nav { background: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 28px; font-weight: 700; color: #16A34A; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #1F2937; font-weight: 500; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover { color: #16A34A; }
+    .nav-book { background: #16A34A; color: #fff !important; padding: 10px 24px; border-radius: 12px; font-weight: 600 !important; }
+    .nav-book:hover { background: #15803D !important; color: #fff !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 26px; height: 3px; background: #1F2937; border-radius: 3px; transition: 0.3s; }
+
+    /* Hero */
+    .hero { padding: 80px 0; background: #FFFFFF; }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero h1 span { color: #16A34A; }
+    .hero p { font-size: 20px; color: #6B7280; margin-bottom: 32px; max-width: 500px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+    .hero-circle { width: 420px; height: 420px; border-radius: 50%; background: linear-gradient(135deg, #F0FAF0, #DCFCE7); display: flex; align-items: center; justify-content: center; position: relative; }
+    .hero-circle::before { content: ''; position: absolute; width: 360px; height: 360px; border-radius: 50%; border: 3px dashed #22C55E; opacity: 0.4; }
+    .hero-circle-inner { width: 280px; height: 280px; border-radius: 50%; background: linear-gradient(135deg, #16A34A, #22C55E); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(22, 163, 74, 0.3); }
+    .hero-circle-inner span { font-size: 100px; }
+    .hero-badge { position: absolute; bottom: 20px; right: -10px; background: #fff; padding: 12px 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); font-weight: 600; color: #16A34A; }
+
+    /* Marquee */
+    .marquee-section { background: #F0FAF0; padding: 20px 0; overflow: hidden; }
+    .marquee-track { display: flex; gap: 40px; animation: scroll 30s linear infinite; width: max-content; }
+    .marquee-track span { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #16A34A; font-size: 16px; white-space: nowrap; }
+    .marquee-track span i { color: #22C55E; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Services */
+    .services { background: #FFFFFF; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: #fff; border-radius: 12px; padding: 32px; border-left: 4px solid #16A34A; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(22, 163, 74, 0.12); }
+    .service-card .icon { font-size: 36px; margin-bottom: 16px; }
+    .service-card h3 { margin-bottom: 8px; }
+    .service-card p { color: #6B7280; font-size: 15px; }
+
+    /* About */
+    .about { background: #F0FAF0; }
+    .about .container { max-width: 800px; text-align: center; }
+    .about p { font-size: 18px; color: #4B5563; line-height: 1.8; }
+    .about .green-tag { display: inline-block; background: #DCFCE7; color: #15803D; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin-bottom: 16px; }
+
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .gallery-item { background: #fff; border-radius: 12px; padding: 32px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s; border: 1px solid #f0f0f0; }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .gallery-item span { font-size: 48px; display: block; margin-bottom: 12px; }
+    .gallery-item p { font-weight: 600; color: #1F2937; }
+
+    /* Reviews */
+    .reviews { background: #F0FAF0; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .review-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .review-card .stars { margin-bottom: 12px; }
+    .review-card .stars i { color: #D1D5DB; font-size: 16px; margin-right: 2px; }
+    .review-card p { color: #6B7280; font-size: 15px; margin-bottom: 16px; line-height: 1.7; }
+    .review-card .name { font-weight: 600; color: #1F2937; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info h3 { margin-bottom: 16px; }
+    .contact-info p { color: #6B7280; margin-bottom: 8px; font-size: 16px; }
+    .contact-info .phone-large { font-size: 28px; font-weight: 700; color: #16A34A; margin: 16px 0; }
+    .contact-highlight { background: #F0FAF0; border-radius: 12px; padding: 24px; margin-top: 24px; border-left: 4px solid #16A34A; }
+    .contact-highlight p { font-weight: 600; color: #1F2937; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 14px 18px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 16px; font-family: 'Work Sans', sans-serif; margin-bottom: 16px; transition: border-color 0.2s; background: #fff; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #16A34A; }
+    .contact-form textarea { height: 140px; resize: vertical; }
+
+    /* Footer */
+    footer { background: #15803D; color: #fff; padding: 60px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    footer h4 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+    footer p, footer a { color: rgba(255,255,255,0.8); font-size: 15px; text-decoration: none; line-height: 2; }
+    footer a:hover { color: #fff; }
+    .social-links { display: flex; gap: 16px; margin-top: 12px; }
+    .social-links a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.1); color: #fff; font-size: 20px; transition: all 0.3s; }
+    .social-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; margin-top: 48px; text-align: center; font-size: 14px; color: rgba(255,255,255,0.6); }
+
+    /* Floating quote */
+    .floating-quote { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #16A34A, #15803D); color: #fff; padding: 16px 24px; border-radius: 16px; text-decoration: none; font-weight: 600; font-size: 18px; box-shadow: 0 8px 32px rgba(22, 163, 74, 0.35); z-index: 1000; display: flex; align-items: center; gap: 12px; transition: all 0.3s; }
+    .floating-quote:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(22, 163, 74, 0.45); color: #fff; }
+    .floating-quote i { font-size: 20px; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      h1 { font-size: 36px; }
+      h2 { font-size: 30px; }
+      .hero .container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero p { margin: 0 auto 32px; }
+      .hero-buttons { justify-content: center; }
+      .hero-circle { width: 280px; height: 280px; }
+      .hero-circle::before { width: 240px; height: 240px; }
+      .hero-circle-inner { width: 180px; height: 180px; }
+      .hero-circle-inner span { font-size: 60px; }
+      .hero-badge { bottom: -10px; right: 10px; font-size: 13px; padding: 8px 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); gap: 16px; }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+      .floating-quote { font-size: 15px; padding: 12px 18px; bottom: 16px; right: 16px; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">D&L🌿</a>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:2404600525" class="nav-book">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h1>Your Yard.<br><span>Next Level.</span></h1>
+        <p>We're D&L — a young, energetic crew making your lawn the best-looking one on the block. Same week service, no fuss.</p>
+        <div class="hero-buttons">
+          <a href="tel:2404600525" class="btn btn-primary"><i class="fas fa-phone" style="margin-right:8px"></i> (240) 460-0525</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-circle">
+          <div class="hero-circle-inner">
+            <img src="https://picsum.photos/seed/dl-hero/400/400" alt=" " style="width:100%;height:100%;object-fit:cover" />
+          </div>
+        </div>
+        <div class="hero-badge">
+          <i class="fas fa-check-circle" style="color:#22C55E;margin-right:6px"></i> Free Estimates
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span><i class="fas fa-calendar-check"></i> Same Week Service</span>
+      <span><i class="fas fa-dollar-sign"></i> Free Estimates</span>
+      <span><i class="fas fa-id-card"></i> Licensed Crew</span>
+      <span><i class="fas fa-comment-dots"></i> Text Us Anytime</span>
+      <span><i class="fas fa-calendar-check"></i> Same Week Service</span>
+      <span><i class="fas fa-dollar-sign"></i> Free Estimates</span>
+      <span><i class="fas fa-id-card"></i> Licensed Crew</span>
+      <span><i class="fas fa-comment-dots"></i> Text Us Anytime</span>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>We Handle It All</h2>
+      <p class="section-subtitle">From basic cuts to full transformations — we've got the tools, the crew, and the energy.</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="icon">🌿</div><h3>Lawn Care</h3><p>Mowing, edging, blowing — keeping your turf crisp and clean every visit.</p></div>
+        <div class="service-card"><div class="icon">🌱</div><h3>Mulch & Plantings</h3><p>Fresh mulch, flower beds, shrubs — instant curb appeal for any home.</p></div>
+        <div class="service-card"><div class="icon">✂️</div><h3>Trimming & Pruning</h3><p>Shrub shaping, hedge trimming, tree pruning for a polished landscape.</p></div>
+        <div class="service-card"><div class="icon">🧹</div><h3>Cleanups</h3><p>Spring & fall cleanup, leaf removal, debris hauling — we leave it spotless.</p></div>
+        <div class="service-card"><div class="icon">💦</div><h3>Power Washing</h3><p>Driveways, decks, patios, siding — blast away dirt and grime.</p></div>
+        <div class="service-card"><div class="icon">🏗️</div><h3>Design & Install</h3><p>Full landscape design, hardscaping, drainage — build the yard you deserve.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <span class="green-tag"><i class="fas fa-leaf" style="margin-right:6px"></i> Who We Are</span>
+      <h2>Young. Driven. Obsessed With Your Lawn.</h2>
+      <p>D&L Landscaping is a fresh, professional crew serving homeowners who want their yard to look amazing without the hassle. We answer texts, show up on time, and treat every property like it's our own. No corporate runaround — just real people who take pride in the work.</p>
+      <br>
+      <p style="font-weight:600;color:#16A34A;">Text us a photo of your yard — we'll quote you in minutes.</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2>What We Do Best</h2>
+      <p class="section-subtitle">A quick look at the work we love doing every day.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://picsum.photos/seed/dl1/400/400" alt=" " style="width:100%;height:100%;object-fit:cover" /><p>Lush Lawns</p></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/dl2/400/400" alt=" " style="width:100%;height:100%;object-fit:cover" /><p>Tree Care</p></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/dl3/400/400" alt=" " style="width:100%;height:100%;object-fit:cover" /><p>Curb Appeal</p></div>
+        <div class="gallery-item"><img src="https://picsum.photos/seed/dl4/400/400" alt=" " style="width:100%;height:100%;object-fit:cover" /><p>Garden Beds</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <h2>What Clients Say</h2>
+      <p class="section-subtitle">Real feedback from homeowners we've worked with.</p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <div class="name">[Client Name]</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <div class="name">[Client Name]</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <div class="name">[Client Name]</div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p>Share your experience here — add a real client testimonial.</p>
+          <div class="name">[Client Name]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Let's Talk</h2>
+      <p class="section-subtitle">Call, text, or send us a message — we'll get back to you fast.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p><i class="fas fa-phone" style="color:#16A34A;width:24px"></i> Call or Text</p>
+          <div class="phone-large">(240) 460-0525</div>
+          <p style="color:#6B7280;margin-bottom:8px"><i class="fas fa-envelope" style="color:#16A34A;width:24px"></i> Text us anytime — we respond fast!</p>
+          <div class="contact-highlight">
+            <p><i class="fas fa-comment-dots" style="color:#16A34A;margin-right:8px"></i> Prefer texting? Send us a message and we'll reply within the hour. We keep it simple.</p>
+          </div>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <textarea placeholder="Tell us about your yard..."></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+        </form>
+      </div>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA9NhogTk8ZLk4Tjon1JURr9XHBEOgd5T8&q=D%26L+Landscaping+Silver+Spring+MD" width="100%" height="260" style="border:0;border-radius:12px;margin-top:16px" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>D&L🌿 Landscaping</h4>
+          <p>Young, professional crew making lawns look their best. Text us — we're friendly!</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#services">Services</a><br>
+          <a href="#about">About Us</a><br>
+          <a href="#gallery">Gallery</a><br>
+          <a href="#reviews">Reviews</a><br>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone" style="margin-right:8px"></i> (240) 460-0525</p>
+          <p><i class="fas fa-comment-dots" style="margin-right:8px"></i> Text Anytime</p>
+          <p><i class="fas fa-envelope" style="margin-right:8px"></i> info@dllandscaping.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 D&L Landscaping. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Quote -->
+  <a href="tel:2404600525" class="floating-quote">
+    <i class="fas fa-phone"></i> Get a Free Quote
+  </a>
+
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
